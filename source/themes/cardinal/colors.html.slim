@@ -1,0 +1,69 @@
+---
+title: "Colors: Themeing"
+id: themes
+---
+
+h1 Colors
+
+section.styleguide-module-details
+  h2 Blues
+  ul.swatches
+    - data.colors.each do |swatch|
+      - if swatch.type == 'blues'
+        li.swatch
+          .color class="#{swatch.name.downcase.tr(" ", "-")}"=image_tag('styleguide/swatch.gif')
+          h3== swatch.name
+          h4== swatch.hex
+
+  h3 Usage
+
+  dl.styleguide-usage
+    dt cardinal Blue
+    dd This is the primary action color and is used for: links, link + icons groupings, hover/focus state on form elements, primary buttons, active radio and checkmark icons, hover on custom select items, and the top navigation bar.
+
+    dt Water Blue
+    dd An alternative, lighter blue that is used for: breadcrumb and table header background colors.
+
+
+section.styleguide-module-details
+  h2 Grays
+  ul.swatches
+    - data.colors.each do |swatch|
+      - if swatch.type == 'grays'
+        li.swatch
+          .color class="#{swatch.name.downcase.tr(" ", "-")}"=image_tag('styleguide/swatch.gif')
+          h3== swatch.name
+          h4== swatch.hex
+
+  dl.styleguide-usage
+    dt Fuscous Gray
+    dd The primary text color. The color #{inline_code("#000")} should never be used.
+
+    dt Cloudy
+    dd An alternative text color that can be used to reduce focus of the text.
+
+    dt Swirl
+    dd The primary border color for elements and is used for: input borders, border for tabs and their associated tab containers, and for divs that require a border and wrap multiple elements.
+
+    dt Pampas
+    dd The lightest gray and should be used when an element containing text requires a background color.
+
+section.styleguide-module-details
+  h2 Alerts
+  ul.swatches
+    - data.colors.each do |swatch|
+      - if swatch.type == 'alerts'
+        li.swatch
+          .color class="#{swatch.name.downcase.tr(" ", "-")}"=image_tag('styleguide/swatch.gif')
+          h3== swatch.name
+          h4== swatch.hex
+
+  dl.styleguide-usage
+    dt Jade
+    dd Success color.
+
+    dt Sunset Orange
+    dd Error color.
+
+    dt Banana Mania
+    dd Warning color and also used as the background color on required fields (ie. input and select).

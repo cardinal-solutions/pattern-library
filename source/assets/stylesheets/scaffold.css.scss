@@ -1,0 +1,65 @@
+// ----------------------------------------------------------------
+// The global file concatenates a series of normalize files,
+// variables, and modules so we can service as few CSS files to
+// the browser as possible.
+// ----------------------------------------------------------------
+
+// Setup
+// ----------------------------------------------------------------
+@import "setup/variables";
+@import "themes/cardinal/variables";
+
+// Helpers
+// ----------------------------------------------------------------
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/utilities";
+
+// Normalize elements
+// ----------------------------------------------------------------
+@import "base/root";
+@import "base/code";
+@import "base/emphasis";
+@import "base/fonts";
+@import "base/grid";
+@import "base/headings";
+@import "base/html5";
+@import "base/images";
+@import "base/links";
+@import "base/lists";
+@import "base/misc";
+@import "base/paragraphs";
+@import "base/quotes";
+@import "base/tables";
+
+// ----------------------------------------------------------------
+// Modules
+// ----------------------------------------------------------------
+@import "modules/accordion";
+@import "modules/action-prompt";
+@import "modules/alerts";
+@import "modules/badges";
+@import "modules/breadcrumbs";
+@import "modules/buttons";
+@import "modules/checkbox-list";
+@import "modules/containers";
+@import "modules/collapsible";
+@import "modules/carousels";
+@import "modules/dates";
+@import "modules/dropdown";
+@import "modules/file-upload";
+@import "modules/forms";
+@import "modules/icons";
+@import "modules/lists";
+@import "modules/messaging";
+@import "modules/modals";
+@import "modules/navigation";
+@import "modules/pagepush";
+@import "modules/pagination";
+@import "modules/popovers";
+@import "modules/progress-bars";
+@import "modules/tables";
+@import "modules/tabs";
+@import "modules/thumbnails";
+@import "modules/tooltips";
+@import "modules/visualizations";

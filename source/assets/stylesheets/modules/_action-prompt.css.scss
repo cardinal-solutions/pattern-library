@@ -1,0 +1,15 @@
+.action-prompt {
+  border-style: solid;
+  border-width: 1px;
+  line-height: $baseline*12;
+  min-height: $baseline*12;
+  padding: $baseline*2;
+  text-align: center;
+  [class*="icon-"]:not([class*="button-"]) {
+    font-size: 24px;
+    padding-left: $baseline*3;
+    &:before {
+      font-size: 1em;
+    }
+  }
+}

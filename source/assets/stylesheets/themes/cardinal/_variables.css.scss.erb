@@ -1,0 +1,104 @@
+// ----------------------------------------------------
+// Theme Specific Variables
+// ----------------------------------------------------
+// ----------------------------------------------------------------
+// Font Sizes
+// ----------------------------------------------------------------
+$golden-ratio: 1.618;
+$root-font-size: 62.5%;
+$base-font-size: 12px;
+
+$h1-font-size: 21px;
+$h2-font-size: 18px;
+$h3-font-size: 16px;
+$h4-font-size: 14px;
+$h5-font-size: 13px;
+$h6-font-size: 12px;
+
+$h1-margin: $baseline*2;
+$h2-margin: $baseline*1.5;
+$h3-margin: $baseline;
+$h4-margin: $baseline;
+$h5-margin: $baseline;
+$h6-margin: $baseline;
+
+// ----------------------------------------------------------------
+// Font Families
+// ----------------------------------------------------------------
+$serif-font-family: "Times New Roman", Sans-serif;
+$sans-font-family: "Helvetica Neue", Helvetica;
+
+// ----------------------------------------------------
+// Colors
+// ----------------------------------------------------
+// Generates colors from /data/colors.yml. Colors are in a YML
+// file so we can use them in both our stylesheets and the styleguide
+// pages.
+//
+// Renders (dark to light):
+// Blues:  $cardinal-blue, $steel-blue, $polo-blue, $water-blue
+// Grays:  $fuscous-gray, $fiar-gray, $cloudy, $swirl, $cararra, $pampas
+// Alerts: $jade, $sunset-orange, $banana-mania
+<% data.colors.each do |color| %>
+  $<%= color.name.downcase.tr(" ", "-") %>: <%= color.hex %>;
+<% end %>
+
+// Mapping them to more common words that can be used
+$black:         $fuscous-grey;
+$dark-gray:     $friar-grey;
+$gray:          $swirl;
+$medium-gray:   $cararra;
+$light-gray:    $pampas ;
+
+$blue:          $cardinal-blue;
+$medium-blue:   $polo-blue;
+$light-blue:    $water-blue;
+$green:         $jade;
+$red:           $sunset-orange;
+$yellow:        $banana-mania;
+
+// Interface Colors
+$alert-success: $green;
+$alert-error:   $red;
+$alert-message: $blue;
+$alert-warning: $yellow;
+
+$text-color:    $black;
+$text-color-alt:$dark-gray;
+$border-color:  $gray;
+$root-bg-color: #fff;
+$action-color:  $blue;
+$link-color:    $blue;
+$link-color-hover: $black;
+
+// ----------------------------------------------------
+// Interface
+// ----------------------------------------------------
+$border-radius: $sub-baseline/2;
+$inline-code-background: lighten($alert-warning, 13%);
+
+// ----------------------------------------------------
+// Icons
+// ----------------------------------------------------
+// Renders:
+// $icon-edit
+// $icon-up-arrow
+// $icon-right-arrow
+// $icon-down-arrow
+// $icon-left-arrow
+// $icon-exlamation
+// $icon-exlamation-alt1
+// $icon-exlamation-alt2
+// $icon-exlamation-alt3
+// $icon-plus
+// $icon-plus-alt
+// $icon-minus
+// $icon-minus-alt
+// $icon-x
+// $icon-x-alt
+// $icon-checkmark
+// $icon-checkmark-alt
+// $icon-info
+<% data.icons.each do |icon| %>
+  $icon-<%= icon.name.downcase.tr(" ", "-") %>: <%= icon.entity %>;
+<% end %>

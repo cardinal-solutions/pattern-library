@@ -1,0 +1,29 @@
+// Renders:
+// $icon-edit
+// $icon-up-arrow
+// $icon-right-arrow
+// $icon-down-arrow
+// $icon-left-arrow
+// $icon-exlamation
+// $icon-exlamation-alt1
+// $icon-exlamation-alt2
+// $icon-exlamation-alt3
+// $icon-plus
+// $icon-plus-alt
+// $icon-minus
+// $icon-minus-alt
+// $icon-x
+// $icon-x-alt
+// $icon-checkmark
+// $icon-checkmark-alt
+// $icon-info
+// $icon-document-pdf
+%icons {
+  font-family: "cardinal Icons";
+}
+<% data.icons.each do |icon| %>
+  .icon-<%= icon.name.downcase.tr(" ", "-") %>:before {
+    @extend %icons;
+    content: "\<%= icon.entity %>";
+  }
+<% end %>

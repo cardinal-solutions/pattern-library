@@ -1,0 +1,31 @@
+---
+title: Markup
+id: 'code-standards'
+---
+h1 Markup
+
+p No matter what back end technology is used to generate a website, when it gets rendered to a page it always becomes HTML, CSS, and JavaScript when displayed in browser. As such, a common set of best practices can be employed to ensure that what the user gets is as good as it can be, regardless of the device or method they choose to browse the site with. The methodology described below presents a content focused, component based, semantic, and accessible approach for building web sites. Designing this way is challenging, and requires a different approach than traditional desktop-sized Photoshop documents. That will be covered in other sections of this document, but one of the best ways to design this way is in the browser using Style Prototypes.
+
+p The core of every website is the underlying markup that, through styling and interaction, gets transformed into a web experience. This underlying code is the heart and soul of every site and should be treated as such. By properly utilizing HTML5 semantic markup and ensuring content is accessible and properly marked up with Resource Description Framework in Attributes (RDFa), websites will be able to achieve better search engine optimization (SEO) and ensure that the content will be highly available no matter the accessing system and last long in to the future.
+
+section.styleguide-module-details
+  h2 HTML Semantics
+
+  p When developing websites, HTML semantic tags should be used and the HTML5 standard should be utilized. Any elements that are obsolete or deprecated as of HTML5 should not be used. For a complete listing of available HTML elements and their defined meaning, see the Web Platform Elements Reference. The proper semantics for each element should always be used, for instance, the #{inline_code("<table>")} element should only be used to mark up tabular data, never for layout or lists. Elements designed for style, such as #{inline_code("<b>")} and #{inline_code("<center>")} should never be used and should be done through styling instead. Should confusion arise as to exactly how to use a given element, or if its definition is not clear, HTML5 Doctor is an excellent supplementary resource to Web Platform. If support is needed for browsers that do not natively implement all semantic elements, the HTML5 Shiv should be conditionally made available.
+
+section.styleguide-module-details
+  h2 Viewport Meta Tag
+
+  p When building responsive websites, for the time being, a non-standard meta tag needs to be used in order to tell browsers how to react. This is colloquy known as a "viewport tag". While there are many options that can go in to the viewport tag, the tag, in its entirety, that should be used is as follows:
+
+  p There is currently a CSS Device Adaptation development specification in the works which, when done, will move this from a markup tag to a CSS directive known as the @viewport directive. Currently, Internet Explorer 10 and up, including on mobile devices, does not use the viewport meta tag, but rather the viewport CSS directive, so both should be included on all projects.
+
+section.styleguide-module-details
+  h2 Styling
+
+  p If markup is the skeleton of a website, styling is the funny hat. Through CSS, a stack of content on a page can become flexible and fantastically flourished. With the introduction of CSS3, styling can now include such fanciful additions such as animations, perspective, and even 3D. But with all of this power, and all of this responsibility, a firm structure to create a system of style needs to be in place or else everything can run off of the tracks. Below represents a component based systematic approach to styling.
+
+section.styleguide-module-details
+  h2 Base Browser Styling
+
+  p Due to lack of standards around it, each browser manufacturer creates their own styling for their browser, leaving each browser's default base rendering of elements different. This, of course, causes inconsistencies across browsers that must be fixed. The two most prominent ways of doing this is through either to reset or normalize the appearance of all elements. While normalization has become the go-to method for many projects recently, it can introduce new issues into the cascade. This is the same reason it is recommended to create a base component instead of allowing site-specific base styling to cascade throughout the entire site. Because of this, it is recommended to use the reset method; preferable one that discreetly targets the elements that need resets, fixes the bugs that the common Normalize.css fixes, and adds the correct baselines for HTML5 elements if they are not otherwise recognized (for instance, applying display: block to the #{inline_code("<main> ")} element).

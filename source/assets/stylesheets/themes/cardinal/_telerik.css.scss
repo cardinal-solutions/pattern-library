@@ -1,0 +1,47 @@
+
+// Error / Invalid Fields
+// ----------------------------------------------------------------
+.field-group.invalid,
+.field.invalid {
+  .RadPicker {
+    float: left;
+  }
+  .RadPicker input,
+  .RadComboBox {
+    border-color: $alert-error;
+    &:hover, &:focus, &.hover, &.focus {
+      border-color: $alert-error;
+      @include box-shadow(lighten($alert-error, 10%) 0 0 10px, lighten($border-color, 10%) 0 1px 2px inset, #fff 0 1px 0);
+    }
+  }
+}
+
+// Required
+// ----------------------------------------------------------------
+.field-group .RadPicker[required] input,
+.field .RadPicker[required] input {
+  background-color: lighten($alert-warning, 15%);
+  border-color: darken($alert-warning, 10%);
+}
+
+// Rad Select Override
+// ----------------------------------------------------------------
+.horizontal-fields .field {
+  .RadComboBox {
+    .rcbInputCell {
+      input:not([type='checkbox']),
+      input:not([type='radio']) {
+        margin-bottom: 0;
+        height: 22px;
+        line-height: 22px;
+      }
+    }
+    .rcbArrowCellRight {
+      a {
+        @include border-right-radius(4px);
+        border-right: 1px solid #ccc;
+      }
+    }
+  }
+}
+

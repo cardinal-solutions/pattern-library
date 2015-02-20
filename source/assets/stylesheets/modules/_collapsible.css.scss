@@ -1,0 +1,44 @@
+.collapsible {
+  @include clear;
+}
+.collapsible-action,
+.collapsible-panel {
+  margin: 0;
+  padding: $baseline;
+}
+.collapsible-action {
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  &:before {
+    @include arrow(left, #000, $baseline/2);
+    content: "";
+    position: absolute;
+      top: $sub-baseline*4;
+      right: $baseline;
+  }
+  &[data-active="true"] {
+    &:before {
+      @include arrow(bottom, #000, $baseline/2);
+      top: $sub-baseline*5;
+    }
+  }
+  &[data-active="false"] {
+    border-bottom: 1px solid;
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
+}
+.collapsible-panel {
+  border-bottom: 1px solid;
+  &:last-of-type {
+    border-bottom: 0;
+  }
+  &[data-active="false"] {
+    display: none;
+  }
+  &[data-active="true"] {
+    display: block;
+  }
+}

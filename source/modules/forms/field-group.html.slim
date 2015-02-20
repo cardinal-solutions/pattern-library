@@ -1,0 +1,41 @@
+---
+title: "Forms - Field Groups: Modules"
+id: modules
+---
+section.styleguide-module-details
+  h2 Grouped Fields
+
+  p Sometimes there's the need to group inputs together to either display them horizontally or have multiple inputs to a single label. When grouping fields together wrap them in #{inline_code('<div class="field-group">')}. By default it will display them horizontally.
+
+  form.horizontal-fields
+    = live_example('/modules/forms/code-examples/field-group-html')
+    = code_example('/modules/forms/code-examples/field-group-html', 'html')
+
+section.styleguide-module-details
+  h2 Errors on Grouped Fields
+
+  p Errors on field groups work similar to the errors on basic inputs. In this example the fields are using a single label, visually grouping them together.
+
+  ol.styleguide-options
+    li Add the #{inline_code('.invalid')} class should be added to the parent #{inline_code('<div class="field-group">')} element.
+    li Add #{inline_code('<span class="error"></span>')} after the last #{inline_code('<div class="field">')}.
+
+  form.horizontal-fields
+    = live_example('/modules/forms/code-examples/field-group-error-html')
+    = code_example('/modules/forms/code-examples/field-group-error-html', 'html')
+
+section.styleguide-module-details
+  h2 Horizontal Field Layout Overrides
+
+  p When using the #{inline_code('.horizontal-fields')} class on the parent #{inline_code('<form>')} a #{inline_code('.vertical-fields')} class can be applied to groups of fields to change their layout so they align vertically.
+
+  form.horizontal-fields
+    = live_example('/modules/forms/code-examples/field-group-layout-options-html')
+    = code_example('/modules/forms/code-examples/field-group-layout-options-html', 'html')
+
+section.styleguide-module-details
+  h2 Rate Combination
+
+  form.horizontal-fields
+    = live_example('/modules/forms/code-examples/field-rates-html')
+    = code_example('/modules/forms/code-examples/field-rates-html', 'html')

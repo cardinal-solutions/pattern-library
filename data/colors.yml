@@ -1,0 +1,41 @@
+- name: Cardinal Blue
+  hex: '#0069aa'
+  type: blues
+- name: Steel Blue
+  hex: '#4f8dc2'
+  type: blues
+- name: Polo Blue
+  hex: '#9ab7da'
+  type: blues
+- name: Water Blue
+  hex: '#cedaec'
+  type: blues
+
+- name: Fuscous Grey
+  hex: '#545451'
+  type: grays
+- name: Friar Grey
+  hex: '#7d7d79'
+  type: grays
+- name: Cloudy
+  hex: '#abaaa9'
+  type: grays
+- name: Swirl
+  hex: '#d4d2d2'
+  type: grays
+- name: Cararra
+  hex: '#f0f0f0'
+  type: grays
+- name: Pampas
+  hex:  '#f7f7f7'
+  type: grays
+
+- name: Jade
+  hex: '#00C762'
+  type: alerts
+- name: Sunset Orange
+  hex: '#FF544A'
+  type: alerts
+- name: Banana Mania
+  hex: '#FBE7A6'
+  type: alerts

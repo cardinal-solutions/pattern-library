@@ -1,0 +1,54 @@
+// ----------------------------------------------------------------
+// Links
+// ----------------------------------------------------------------
+
+// 1. Addresses outline displayed oddly in Chrome
+// 2. Improves readability when focused and also mouse hovered in all browsers
+//    people.opera.com/patrickl/experiments/keyboard/test
+// ----------------------------------------------------------------
+a {
+  // 1
+  &:focus {
+    outline: thin dotted;
+  }
+
+  // 2
+  &:hover,
+  &:active {
+    outline: 0;
+  }
+}
+
+a.website {
+  color: $link-color;
+  position: relative;
+  text-decoration: none;
+  -webkit-backface-visibility: hidden; // prevents an annoying flicker on hover
+  &:focus {
+    outline: 0;
+  }
+  // Creates the lines under the text
+  &:after,
+  &:before {
+    background-color: $link-color;
+    content: "";
+    height: 1px;
+    position: absolute;
+      bottom: 0;
+      left: 0;
+    width: 100%;
+  }
+  &:after {
+    @include opacity(.2);
+  }
+  &:before {
+    @include scaleX(0);
+    @include transition(all 0.3s ease-in-out 0s);
+  }
+  &:hover:before,
+  &:focus:before,
+  &:active:before {
+    @include scaleX(1);
+    @include scaleX(1);
+  }
+}

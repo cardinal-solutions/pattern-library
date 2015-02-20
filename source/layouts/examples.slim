@@ -1,0 +1,30 @@
+doctype html
+
+html class="no-js" lang="en"
+
+  head
+    meta charset="utf-8"
+
+    / Always force latest IE rendering engine or request Chrome Frame
+    meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
+
+    / Use title if it's in the page YAML frontmatter
+    title #{current_page.data.title}
+    meta name="description" content="#{current_page.data.description}"/
+
+    meta name="viewport" content="width=device-width"
+
+    // tmp sites from Cardinal to see what's causing breaking issues
+    == stylesheet_link_tag "tmp/normalize", "tmp/site", "tmp/theme"
+
+    == stylesheet_link_tag "kendo/kendo", "scaffold", "themes/cardinal/cardinal"
+    == javascript_include_tag "libs/modernizr"
+
+    - if current_page.data.testing
+      == stylesheet_link_tag "testing/jasmine"
+
+  body id="examples" class="#{page_classes}" style="padding: 20px;"
+
+    == yield
+
+    == javascript_include_tag "libs/jquery", "libs/kendo.web.min", "global", "modules/forms-accessible-options", "modules/jquery.cardinal.select", "modules/jquery.cardinal.tabs", "modules/jquery.cardinal.accordion", "modules/jquery.cardinal.collapsible", "modules/jquery.cardinal.alert", "modules/jquery.cardinal.pagepush", "modules/jquery.cardinal.fileupload"

@@ -1,0 +1,684 @@
+// ----------------------------------------------------------------
+// Heavy scoping to start using border-box
+// The form wraps everything on the page and the entire
+// site isn't built to use it well.
+// ----------------------------------------------------------------
+.field-group,
+.option-group,
+.field {
+  * {
+    @include box-sizing(border-box);
+  }
+}
+
+.field {
+  [class*="icon-"] {
+    margin: $sub-baseline 0 0 $sub-baseline;
+  }
+}
+
+// ----------------------------------------------------------------
+// Helper Mixins & Extends
+// ----------------------------------------------------------------
+%form-element-basics {
+  line-height: $field-line-height;
+  height: $field-height;
+  padding: 0 $field-padding;
+}
+
+// ----------------------------------------------------------------
+// Root Form Element
+// ----------------------------------------------------------------
+form {
+  @include clear;
+  @if $legacy-support-for-ie {
+    margin: 0; // Corrects margin displayed oddly in IE6/7
+  }
+}
+
+// ----------------------------------------------------------------
+// Fieldsets
+// ----------------------------------------------------------------
+
+// Define consistent border, margin, and padding
+fieldset {
+  // border: 1px solid #c0c0c0;
+  @include clear;
+  clear: both;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+// 1. Corrects color not being inherited in IE6/7/8/9
+// 2. Remove padding so people aren't caught out if they zero out fieldsets.
+// 3. Corrects text not wrapping in FF3
+// 4. Corrects alignment displayed oddly in IE6/7
+legend {
+  border: 0; // 1
+  padding: 0; // 2
+  white-space: normal; // 3
+  @if $legacy-support-for-ie {
+    *margin-left: -7px; // 4
+  }
+}
+
+
+// ----------------------------------------------------------------
+// Basic Form Resets
+// ----------------------------------------------------------------
+
+// 1. Correct font family not being inherited in all browsers.
+// 2. Corrects font size not being inherited in all browsers
+// 3. Addresses margins set differently in IE6/7, FF3+, S5, Chrome
+// 4. Improves appearance and consistency in all browsers
+// ----------------------------------------------------------------
+button,
+input,
+select,
+textarea {
+  font-family: inherit; // 1
+  font-size: 100%; // 2
+  margin: 0; // 3
+  vertical-align: baseline; // 4
+  @if $legacy-support-for-ie {
+    *vertical-align: middle; // 4
+  }
+}
+
+// 1. Addresses FF3/4 setting line-height on 'input' using !important in the UA stylesheet
+// 2. Removes inner padding and border in FF3+ www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+// ----------------------------------------------------------------
+button,
+input {
+  line-height: normal; // 1
+  &::-moz-focus-inner { // 2
+    border: 0;
+    padding: 0;
+  }
+}
+
+// Address inconsistent `text-transform` inheritance for `button` and `select`.
+// All other form control elements do not inherit `text-transform` values.
+// Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+// Correct `select` style inheritance in Firefox 4+ and Opera.
+// ----------------------------------------------------------------
+button,
+select {
+  text-transform: none;
+}
+
+// ----------------------------------------------------------------
+// Buttons
+// ----------------------------------------------------------------
+
+// 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+//    and `video` controls
+// 2. Corrects inability to style clickable 'input' types in iOS
+// 3. Improves usability and consistency of cursor style between image-type
+//    'input' and others
+// 4. Removes inner spacing in IE7 without affecting normal text inputs
+//    Known issue: inner spacing remains in IE6
+// ----------------------------------------------------------------
+button,
+html input[type="button"], // 1
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; // 2
+  cursor: pointer; // 3
+  @if $legacy-support-for-ie {
+    *overflow: visible;  // 4
+  }
+}
+
+// ----------------------------------------------------------------
+// Text Inputs
+// ----------------------------------------------------------------
+// temporary scoping
+.field {
+  margin-bottom: $sub-baseline;
+  input[type=text],
+  input[type=url],
+  input[type=email],
+  input[type=number],
+  input[type=date],
+  input[type=month],
+  input[type=week],
+  input[type=datetime],
+  input[type=datetime-local],
+  input[type=password] {
+    @extend %form-element-basics;
+    &::-webkit-input-placeholder{
+      padding-top: 2px;
+    }
+  }
+}
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+}
+
+
+// ----------------------------------------------------------------
+// Disabled Inputs
+// ----------------------------------------------------------------
+// Re-set default cursor for disabled elements
+button[disabled],
+input[disabled],
+textarea[disabled],
+select[disabled],
+fieldset[disabled] input,
+fieldset[disabled] button,
+fieldset[disabled] select,
+[data-disabled="true"] {
+  cursor: no-drop;
+  cursor: not-allowed;
+}
+button[disabled] {
+  @include opacity(.5);
+}
+
+// ----------------------------------------------------------------
+// Textarea
+// ----------------------------------------------------------------
+// 1. Removes default vertical scrollbar in IE6/7/8/9
+// 2. Improves readability and alignment in all browsers
+// temporary scoping
+.field textarea {
+  @extend %form-element-basics;
+  height: auto;
+  line-height: 1.4;
+  overflow: auto; // 1
+  vertical-align: top; // 2
+}
+
+// ----------------------------------------------------------------
+// Search
+// ----------------------------------------------------------------
+// 1. Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
+// 2. Addresses appearance set to searchfield in S5, Chrome
+// 3. Remove inner padding and search cancel button in Safari 5 and Chrome on OS X.
+// temporary scoping
+.field input[type="search"] { @include box-sizing(content-box); // 1
+  @extend %form-element-basics;
+  -webkit-appearance: textfield; // 2
+  &::-webkit-search-cancel-button, // 3
+  &::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+}
+
+// ----------------------------------------------------------------
+// Labels
+// ----------------------------------------------------------------
+// temporary scope
+.field label,
+.field-group label,
+.option-group label {
+  @extend %form-element-basics;
+  padding-left: 0;
+}
+
+// ----------------------------------------------------------------
+// Help Text
+// ----------------------------------------------------------------
+.help-text {
+  font-size: 90%;
+  line-height: 1.2;
+  padding-top: $sub-baseline/2;
+  padding-bottom: 0;
+}
+
+// ----------------------------------------------------------------
+// Required
+// ----------------------------------------------------------------
+abbr[title="required"] {
+  border: 0;
+  font-size: 18px;
+  line-height: 1;
+  position: relative;
+    bottom: -2px;
+    left: -2px;
+}
+
+// ----------------------------------------------------------------
+// Checkbox & Radio Buttons
+// ----------------------------------------------------------------
+// 1. Addresses box sizing set to content-box in IE8/9
+// 2. Removes excess padding in IE8/9
+// 3. Removes excess padding in IE7
+//    Known issue: excess padding remains in IE6
+// ----------------------------------------------------------------
+// temporary scope
+.option-group {
+  @include clear;
+  min-height: $field-height;
+  input[type="checkbox"],
+  input[type="radio"] {
+    @include box-sizing(border-box); // 1
+    padding: 0; // 2
+    @if $legacy-support-for-ie {
+      *height: 13px; // 3
+      *width: 13px; // 3
+    }
+  }
+  label {
+    cursor: pointer;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 $sub-baseline*2;
+  }
+  .field, li {
+    display: inline-block;
+    margin-right: $baseline;
+    position: relative;
+    label {
+      display: block;
+      padding-left: $sub-baseline*5;
+      position: relative;
+      z-index: 10;
+    }
+  }
+  input[type=checkbox],
+  input[type=radio] {
+    position: absolute;
+      top: $sub-baseline;
+      left: 0px;
+  }
+}
+
+// ----------------------------------------------------------------
+// Custom Options (checkboxes & radio buttons)
+// ----------------------------------------------------------------
+.custom-option {
+  input[type=checkbox],
+  input[type=radio] {
+    outline: none;
+    z-index: 1;
+    @include opacity(0);
+  }
+  label {
+    // Fixes a weird IE bug with the custom checkbox
+    // The checkbox isn't clickable when selected.
+    // Adding a background-color with zero opacity
+    // Fixes the bug. Setting the background to
+    // just 'transparent' doesn't work.
+    background-color: rgba(#fff, 0);
+    display: inline-block;
+    z-index: 10;
+    &[data-disabled="true"] {
+      @include opacity(.5);
+      cursor: no-drop;
+      cursor: not-allowed;
+    }
+  }
+}
+.custom-checkbox-input,
+.custom-radio-input {
+  height: $sub-baseline*4;
+  position: absolute;
+    top: $sub-baseline;
+    left: -1px;
+  width: $sub-baseline*4;
+  z-index: 5;
+  &.checked:after {
+    content: "";
+    background-color: #ccc;
+    height: $baseline;
+    font-size: 11px;
+    position: absolute;
+      top: 1px;
+      left: 1px;
+      z-index: 5;
+    width: $baseline;
+    text-align: center;
+  }
+}
+.custom-checkbox-input.checked:after {
+  top: 0;
+}
+
+// ----------------------------------------------------------------
+// Custom Select
+// ----------------------------------------------------------------
+.custom-select-wrapper {
+  position: relative;
+  select {
+    @include opacity(0);
+    min-width: $baseline*4.5;
+    outline: none;
+    margin-right: $baseline; // Makes the parent width slightly larger to take into account the extra size of the placeholder
+  }
+  // Was pushing the error icon out too far
+  // .invalid & {
+  //   margin-right: $baseline;
+  // }
+}
+.custom-select {
+  clear: both;
+  @extend %form-element-basics;
+  height: auto;
+  min-height: $field-height;
+  position: absolute;
+    top: 0;
+    left: 0;
+  width: 100%;
+  &[data-type="basic"] {
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+        right: $sub-baseline;
+    }
+    &:before {
+      top: $sub-baseline*2;
+    }
+    &:after {
+      bottom: $sub-baseline*2.1;
+    }
+  }
+  &[data-type="typeahead"] {
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+        top: $sub-baseline*2.7;
+        right: $sub-baseline;
+    }
+    &[data-open="true"] {
+      z-index: 30;
+    }
+  }
+  &[data-open="true"] {
+    .custom-select-list {
+      z-index: 30;
+    }
+    .custom-select-list,
+    .custom-select-filter {
+      display: block;
+    }
+  }
+  &[data-open="false"] {
+    .custom-select-list,
+    .custom-select-filter {
+      display: none;
+    }
+  }
+  &[data-disabled="true"] {
+    cursor: no-drop;
+    cursor: not-allowed;
+  }
+  [data-filtered="true"] {
+    display: none;
+  }
+  [data-filtered="false"] {
+    display: block;
+  }
+}
+.custom-select-text {
+  height: $field-height;
+  padding-right: $sub-baseline*4;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 98%;
+}
+.custom-select-clear[class*="icon-"]:not([class*="button-"]) {
+  @include opacity(.2);
+  @include text-shadow(#fff 1px 1px 0);
+  color: $text-color;
+  line-height: 1.9;
+  padding: 0 $sub-baseline;
+  position: absolute;
+    top: 0;
+    right: $sub-baseline*3;
+    bottom: 0;
+  &:before {
+    font-size: 9px;
+    top: 0;
+    left: 0;
+  }
+  &:hover {
+    @include opacity(1);
+  }
+  [data-disabled="true"] & {
+    display: none;
+  }
+}
+.custom-select-filter {
+  position: relative;
+  width: 100%;
+  z-index: 30;
+}
+.custom-select-list {
+  display: none;
+  list-style: none;
+  margin: 0;
+  max-height: 270px;
+  overflow-y: auto;
+  padding: 0;
+  [data-type="basic"] & {
+    position: absolute;
+      // top: -2px;
+      // right: -2px;
+      top: 0px;
+      right: -1px;
+      left: -$sub-baseline*4;
+      z-index: 30;
+    // width: 120%;
+  }
+  [data-type="typeahead"] & {
+    width: 100%;
+    position: relative;
+  }
+  // temporary scope
+  .horizontal-fields & {
+    padding: 0;
+  }
+  li {
+    // @extend %form-element-basics;
+    line-height: 1.4;
+    padding: $sub-baseline $sub-baseline $sub-baseline $sub-baseline*5;
+    position: relative;
+    &[data-selected="true"] {
+      &:before {
+        position: absolute;
+          top: $sub-baseline;
+          left: $sub-baseline;
+      }
+    }
+    // hides the placeholder
+    &:first-child {
+      display: none;
+    }
+    .vertical-fields & {
+      margin-right: 0;
+      width: 100%;
+
+    }
+  }
+}
+
+// ----------------------------------------------------------------
+// Error Icons
+// ----------------------------------------------------------------
+.invalid {
+  .error {
+    display: block;
+    height: $baseline*1.5;
+    width: $baseline*1.5;
+    &:after {
+      content:"!";
+      display:block;
+      font-size: .9em;
+      height: $baseline*1.5;
+      line-height: $baseline*1.7;
+      text-align: center;
+      width: $baseline*1.5;
+    }
+  }
+}
+
+// ----------------------------------------------------------------
+// Form Layout Helpers
+// ----------------------------------------------------------------
+.horizontal-fields {
+  label {
+    float: left;
+    width: $label-width;
+  }
+  .push-label {
+    margin-left: $label-width;
+  }
+  .field {
+    @include clear;
+    margin-bottom: $sub-baseline;
+    input:not([type='checkbox']),
+    input:not([type='radio']),
+    textarea,
+    select,
+    ul,
+    .custom-select-wrapper {
+      float: left;
+      margin-bottom: $sub-baseline;
+    }
+    .help-text {
+      clear: both;
+      margin-left: $label-width;
+      padding-left: $sub-baseline;
+      position: relative;
+        top: -$sub-baseline;
+    }
+    .error {
+      display: none;
+    }
+  }
+  .invalid {
+    .error {
+      display: block;
+      float: left;
+      margin-left: $sub-baseline;
+      position: relative;
+        top: 2px;
+    }
+  }
+  .field-group {
+    @include clear;
+    .field {
+      float: left;
+      margin-right: $baseline;
+      &:last-child,
+      &:last-of-type {
+        margin-right: 0;
+        label {
+          width: auto;
+        }
+      }
+    }
+  }
+  .option-group {
+    @include clear;
+    ul {
+      float: left;
+    }
+    .field, li {
+      margin-bottom: 0;
+      label {
+        float: none;
+        width: auto;
+      }
+    }
+  }
+}
+
+.vertical-fields {
+  .field, li {
+    clear: left;
+    .horizontal-fields & {
+      margin-left: $label-width;
+    }
+    &:first-of-type {
+      margin-left: 0;
+    }
+    .field {
+      clear: none;
+      float: left;
+    }
+  }
+  ul {
+    li, .field {
+      float: left;
+      margin-left: 0;
+      .horizontal-fields & {
+        margin-left: 0;
+      }
+    }
+  }
+  label {
+    display: block;
+  }
+
+  .horizontal-fields & {
+    &.option-group {
+      li{
+        label {
+          float: left;
+        }
+      }
+      li .field {
+        clear: none;
+        float: left;
+        margin: 0 0 (-$baseline) $baseline;
+      }
+    }
+  }
+  .horizontal-fields {
+    > label {
+      float: none;
+    }
+    ul, .field, li {
+      clear: none;
+      float: left;
+      margin-left: 0;
+    }
+    label {
+      width: auto;
+    }
+  }
+  .vertical-fields {
+    .field {
+      margin-left: 0;
+    }
+  }
+}
+
+// ----------------------------------------------------------------
+// Rate Override
+// ----------------------------------------------------------------
+.rate-override {
+  clear: both;
+  padding-top: $sub-baseline;
+  padding-left: $baseline*4;
+  .rate-override-price {
+    position:relative;
+    label {
+      padding-left: 0;
+      width: $baseline*6 !important;
+    }
+  }
+  .rate-override-input {
+    position: absolute;
+      top: 0;
+      left: 0;
+    z-index: 10;
+  }
+  &[data-override="false"] .rate-override-input {
+    visibility: hidden;
+  }
+  &[data-override="true"] .rate-override-input {
+    visibility: visible;
+  }
+}

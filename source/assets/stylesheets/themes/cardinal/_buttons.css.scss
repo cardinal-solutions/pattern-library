@@ -1,0 +1,39 @@
+@function button-text-contract-calc($text-color) {
+  @return if (lightness($text-color) > 50, #333, #fff);
+}
+
+@mixin button ($color) {
+  // @extend %button;
+  @include border-radius($sub-baseline);
+  background-color: $color;
+  @include background(linear-gradient(lighten($color, 5%), $color));
+  @include box-shadow(lighten($color, 10%) 0 1px 0 inset, #fff 0 1px 0);
+  border-color: $color;
+  // color: button-text-contract-calc($color);
+  &:hover, &:focus {
+    @include background(linear-gradient(lighten($color, 10%), lighten($color, 5%)));
+    @include box-shadow(lighten($color, 15%) 0 1px 0 inset, #fff 0 1px 0);
+    border-color: lighten($color, 5%);
+  }
+  &:active {
+    @include background(linear-gradient(lighten($color, 5%), lighten($color, 10%)));
+  }
+}
+
+// ----------------------------------------------------------------
+// Primary Button
+// ----------------------------------------------------------------
+.button-primary,
+.button-primary-small {
+  @include button($blue);
+  color: #fff;
+}
+
+// ----------------------------------------------------------------
+// Secondary Button
+// ----------------------------------------------------------------
+.button-secondary,
+.button-secondary-small {
+  @include button($gray);
+  color: #666;
+}

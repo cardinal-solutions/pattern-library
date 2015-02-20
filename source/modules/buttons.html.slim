@@ -1,0 +1,86 @@
+---
+title: "Buttons: Modules"
+id: modules
+---
+h1 Buttons
+
+p Buttons should be used to denote something that performs an action on a page.
+
+section.styleguide-module-details
+  h2 Primary Buttons
+
+  h3 Usage
+  dl.styleguide-usage
+    dt Creating a Primary Button
+    dd Primary buttons are used to denote the primary action on a form or page. Any HTML element can have the appearance of a primary button by adding the class #{inline_code(".button-primary")}.
+    dt Recommended Elements
+    dd The #{inline_code("button")} and #{inline_code("a")} elements are the preferred elements to use when creating a button. They are easier to style consistently across multiple browsers. The #{inline_code("input")} element may also be used as a buttom but it's more restrictive in how it can be styled.
+    dt Alternative Smaller Button
+    dd In some cases the interface requires a smaller button. The #{inline_code(".button-primary-small")} class is available as a replacement.
+  .tabs.styleguide-tabs
+    li.tab-item.active: a href="#" Button
+    li.tab-item: a href="#" Link
+    li.tab-item: a href="#" Input
+    li.tab-item: a href="#" Small Alternative
+
+  .tab-content-container.styleguide-tab-content-container
+    .tab-content
+      = live_example('/modules/_code-examples/button-primary-button-html')
+      = code_example('/modules/_code-examples/button-primary-button-html', 'html')
+    .tab-content
+      = live_example('/modules/_code-examples/button-primary-link-html')
+      = code_example('/modules/_code-examples/button-primary-link-html', 'html')
+    .tab-content
+      = live_example('/modules/_code-examples/button-primary-input-html')
+      = code_example('/modules/_code-examples/button-primary-input-html', 'html')
+    .tab-content
+      = live_example('/modules/_code-examples/button-primary-alt-html')
+      = code_example('/modules/_code-examples/button-primary-alt-html', 'html')
+
+
+section.styleguide-module-details
+  h2 Secondary Buttons
+
+  h3 Usage
+  dl.styleguide-usage
+    dt Creating a Secondary Button
+    dd Secondary buttons are used to denote a secondary action on a form or page. Any HTML element can have the appearance of a secondary button by adding the class #{inline_code(".secondary-primary")}.
+    dt Recommended Elements
+    dd The #{inline_code("button")} and #{inline_code("a")} elements are the preferred elements to use when creating a button. They are easier to style consistently across multiple browsers. The #{inline_code("input")} element may also be used as a buttom but it's more restrictive in how it can be styled.
+    dt Alternative Smaller Button
+    dd In some cases the interface requires a smaller button. The #{inline_code(".button-secondary-small")} class is available as a replacement.
+
+  .tabs.styleguide-tabs
+    li.tab-item.active: a href="#" Button
+    li.tab-item: a href="#" Link
+    li.tab-item: a href="#" Input
+    li.tab-item: a href="#" Small Alternative
+
+  .tab-content-container.styleguide-tab-content-container
+    .tab-content
+      = live_example('/modules/_code-examples/button-secondary-button-html')
+      = code_example('/modules/_code-examples/button-secondary-button-html', 'html')
+    .tab-content
+      = live_example('/modules/_code-examples/button-secondary-link-html')
+      = code_example('/modules/_code-examples/button-secondary-link-html', 'html')
+    .tab-content
+      = live_example('/modules/_code-examples/button-secondary-input-html')
+      = code_example('/modules/_code-examples/button-secondary-input-html', 'html')
+    .tab-content
+      = live_example('/modules/_code-examples/button-secondary-alt-html')
+      = code_example('/modules/_code-examples/button-secondary-alt-html', 'html')
+
+section.styleguide-module-details
+  h2 Button Groups
+
+  h3 Usage
+  dl.styleguide-usage
+    dt Wrapper
+    dd Button groups are intended to group together primary and secondary buttons. To create a group of buttons wrap them in the class #{inline_code(".button-group")}.
+    dt Primary Actions
+    dd Primary actions may contain more than one button and are displayed on the right hand side. They should contain only one primary button. If there is more than one button then the primary button should be the furthest to the right. A primary action can be created by wrapping a button or group of buttons with the class #{inline_code(".primary-actions")}.
+    dt Secondary Actions
+    dd Secondary actions may contain more than one button and are displayed on the left hand side. They should not contain a primary button. A secondary action can be created by wrapping a button or group of buttons with the class #{inline_code(".secondary-actions")}.
+
+  = live_example('/modules/_code-examples/button-group-html')
+  = code_example('/modules/_code-examples/button-group-html', 'html')

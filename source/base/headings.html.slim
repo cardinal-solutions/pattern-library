@@ -1,0 +1,28 @@
+---
+title: "Headings: Base"
+id: base
+---
+h1 Headings
+
+p Within heading elements there are 6 levels ranging from #{inline_code("<h1>")} to #{inline_code("<h6>")} with the #{inline_code("<h1>")} being the most important heading in the document to the #{inline_code("<h6>")} being the least important. A heading should describe the topic of the section that it precedes. Headings can be used by user agents and screen readers to construct a table of contents from a document to allow for easy navigation.
+
+section.styleguide-module-details
+  h2 Default Headings
+  p Headings can be created by simply creating an #{inline_code("<h1>")} to #{inline_code("<h6>")} element. Typically, a page should only contain a single #{inline_code("<h1>")} as the primary header.
+
+  = live_example('/base/_code-examples/headings-default-html')
+  = code_example('/base/_code-examples/headings-default-html', 'html')
+
+section.styleguide-module-details
+  h2 Heading with Secondary Content
+  p There may be a need to add some secondary information to a heading. To create secondary content, nest a #{inline_code("<small>")} element inside the heading.
+
+  = live_example('/base/_code-examples/headings-secondary-content-html')
+  = code_example('/base/_code-examples/headings-secondary-content-html', 'html')
+
+section.styleguide-module-details
+  h2 Non-H# Elements that Look Like Headings
+  p The visual look and feel of a heading can be applied to any element by using the classes #{inline_code(".h1")} to #{inline_code(".h6")}. This provides a simple way to maintain modular CSS without having to recreate the same visual style for other elements.
+
+  = live_example('/base/_code-examples/headings-appearance-html')
+  = code_example('/base/_code-examples/headings-appearance-html', 'html')

@@ -1,0 +1,36 @@
+.accordion {
+  @include clear;
+  border: 1px solid;
+}
+.accordion-action,
+.accordion-panel {
+  border-bottom: 1px solid;
+  margin: 0;
+  padding: $baseline;
+}
+.accordion-action {
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  &:before {
+    @include arrow(left, #000, $baseline/2);
+    content: "";
+    position: absolute;
+      top: $sub-baseline*4;
+      right: $baseline;
+  }
+  &[data-active="true"] {
+    &:before {
+      @include arrow(bottom, #000, $baseline/2);
+      top: $sub-baseline*5;
+    }
+  }
+}
+.accordion-panel {
+  &[data-active="false"] {
+    display: none;
+  }
+  &[data-active="true"] {
+    display: block;
+  }
+}

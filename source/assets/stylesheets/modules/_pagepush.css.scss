@@ -1,0 +1,114 @@
+%icon-right {
+  border-left: 0;
+  border-right: 1px solid #ccc;
+  margin: 0 $baseline 0 0;
+  padding-right: $baseline*3.5;
+  &:before {
+    left: auto;
+    right: $baseline;
+  }
+  &:first-child {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  &:last-child {
+    border-right: 0;
+    margin: 0;
+    padding-left: 0;
+  }
+}
+
+.page-push {
+  @include clear;
+  background-color: $light-gray;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: $baseline*2;
+  padding: $sub-baseline*2 $sub-baseline*4;
+  &[data-active="true"] {
+    .page-push-overview {
+      display: none;
+    }
+    .page-push-panels {
+      top: -$baseline*2;
+    }
+    .page-push-panel {
+      margin-bottom: -$baseline*2;
+    }
+  }
+  .page-push-overview {
+    float: right;
+    .h5 {
+      margin-bottom: -$sub-baseline;
+    }
+    dd {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+    .overview-section {
+      border-left: 1px solid $border-color;
+      float: left;
+      padding: 0 $baseline;
+      &:first-child {
+        border-left: 0;
+        padding-left: 0;
+      }
+    }
+  }
+  .page-push-actions {
+    @include clear;
+    float: right;
+    padding: $sub-baseline;
+    position: relative;
+      top: $sub-baseline*1.5;
+      z-index: 5;
+    [class*="icon-"]:not([class*="button-"]) {
+      @extend %icon-right;
+    }
+    [data-active="false"] {
+      &:before {
+        @include rotate(90deg);
+      }
+    }
+  }
+  .page-push-panels {
+    // @include clear;
+    clear: both;
+    margin-top: -1px;
+    position: relative;
+      top: 1px;
+      z-index: 1;
+    [data-active="true"] {
+      display: block;
+    }
+    [data-active="false"] {
+      display: none;
+    }
+  }
+  .page-push-panel {
+    float: right;
+    width: 100%;
+  }
+  .panel-section {
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+    float: left;
+    margin-right: -1px;
+    width: 22%;
+    padding: 0 1.5%;
+    &:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+    &:last-child {
+      border-right: 0;
+      padding-right: 0;
+    }
+    .h4 {
+      margin-bottom: $sub-baseline;
+    }
+    dd + dt {
+      margin-top: $baseline;
+    }
+  }
+}

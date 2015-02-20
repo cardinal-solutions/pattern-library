@@ -1,0 +1,38 @@
+---
+title: "Lists: Scaffolds"
+id: base
+---
+h1 Lists
+
+section.styleguide-module-details
+  h2 Description List
+
+  p The description list is used commonly to display pairs of terms and descriptions and works very well when trying to markup key-value pairs.
+
+  h3 Usage
+
+  dl.styleguide-usage
+    dt Wrapper Classes
+    dd A description list is wrapped in the element #{inline_code("<dl>")}. The two classes #{inline_code(".horizontal-list")} and #{inline_code(".vertical-list")} are available to either lay out the key-value pairs in the list horizontally or vertically
+
+    dt Title and Description
+    dd The #{inline_code("<dt>")} element must be nested within the #{inline_code("<dl>")} element and must be followed by the #{inline_code("<dd>")} element. A single #{inline_code("<dt>")} element may have multiple #{inline_code("<dd>")} elements associated with it.
+
+  section.styleguide-module-details
+    .tabs.styleguide-tabs
+      li.tab-item.active: a href="#" Horizontal List
+      li.tab-item: a href="#" Vertical List
+      li.tab-item: a href="#" Address Example
+
+    .tab-content-container.styleguide-tab-content-container
+      .tab-content
+        = live_example('/base/_code-examples/definition-list-horizontal-html')
+        = code_example('/base/_code-examples/definition-list-horizontal-html', 'html')
+
+      .tab-content
+        = live_example('/base/_code-examples/definition-list-vertical-html')
+        = code_example('/base/_code-examples/definition-list-vertical-html', 'html')
+
+      .tab-content
+        = live_example('/base/_code-examples/definition-list-address-html')
+        = code_example('/base/_code-examples/definition-list-address-html', 'html')

@@ -1,0 +1,84 @@
+// ----------------------------------------------------------------
+.list-inline {
+  li {
+    display: inline-block;
+    margin-left: $baseline;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+.list-unstyled {
+  list-style: none;
+}
+
+dl {
+  dt {
+    font-weight: bold;
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
+  }
+  dd {
+    margin: 0 0 $sub-baseline 0;
+  }
+  &.list-inline {
+    dt {
+      float: left;
+      width: 20%;
+    }
+    dd {
+      float: left;
+      width: 80%;
+    }
+  }
+}
+
+dl {
+  @include clear;
+  padding: 0; // temporary overrides
+  margin: 0; // temporary overrides
+  &.horizontal-list,
+  &.horizontal-list-table {
+    margin: 0 0 $baseline*2;
+    dt {
+      clear: left;
+      float: left;
+      font-weight: normal;
+      margin-right: $sub-baseline;
+    }
+    dd {
+      float:left;
+      margin: 0;
+    }
+  }
+  &.horizontal-list-table {
+    dt {
+      min-width: $baseline*10;
+    }
+    dl.vertical-list {
+      margin-bottom: 0;
+    }
+  }
+  &.vertical-list {
+    margin: 0 0 $baseline*2;
+    dt,
+    dd {
+      display: block;
+      float: none;
+      min-height: auto;
+    }
+    dd {
+      margin: 0 0 $sub-baseline;
+      padding: 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      & + dd,
+      & + dd + dd,
+      & + dd + dd + dd {
+        margin-top: -$sub-baseline;
+      }
+    }
+  }
+}

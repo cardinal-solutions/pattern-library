@@ -1,0 +1,222 @@
+<form class="horizontal-fields">
+  <h1>Property Information</h1>
+
+  <div class="six-columns">
+    <div class="field">
+      <label for="policy-deductible">Policy Deductible <abbr title="Required">*</abbr></label>
+      <input id="policy-deductible" name="policy-deductible" required="" size="40" type="text">
+    </div>
+    <div class="option-group">
+      <label for="deductible-basis">Deductible Basis  <abbr title="Required">*</abbr></label>
+      <ul class="custom-option">
+        <li class="field">
+          <label for="deductible-basis-1">Per Occurence</label>
+          <input id="deductible-basis-1" name="deductible-basis" required="" type="radio"><span class="custom-radio-input"></span>
+        </li>
+        <li class="field">
+          <label for="deductible-basis-2">Per Building</label>
+          <input id="deductible-basis-2" name="deductible-basis" required="" type="radio"><span class="custom-radio-input"></span>
+        </li>
+      </ul>
+    </div>
+    <div class="field">
+      <label for="deductible-description">Deductible Description</label>
+      <textarea cols="45" id="deductible-description" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="six-columns omega">
+    <div class="option-group">
+      <label for="losses">Losses Last 3 Years</label>
+      <ul class="custom-option">
+        <li class="field">
+          <label for="losses-1">Yes</label>
+          <input id="losses-1" name="losses" type="radio">
+          <span class="custom-radio-input"></span>
+        </li>
+        <li class="field">
+          <label for="losses-2">No</label>
+          <input id="losses-2" name="losses" type="radio">
+          <span class="custom-radio-input"></span>
+        </li>
+      </ul>
+    </div>
+    <div class="field">
+      <label for="expiring-premium">Expiring Preiumn</label>
+      <input id="expiring-premium" name="expiring-premium" size="40" type="text">
+    </div>
+  </div>
+
+  <fieldset>
+    <legend><h2>Location</h2></legend>
+
+    <div class="six-columns">
+      <div class="field">
+        <label for="location-name">Location Name <abbr title="Required">*</abbr></label>
+        <input id="location-name" name="location-name" required="" size="40" type="text">
+      </div>
+      <div class="field-group vertical-fields">
+        <div class="field">
+          <label for="address">Address <abbr title="Required">*</abbr></label>
+          <input id="address" name="address" required="" size="40" type="text">
+        </div>
+        <div class="field">
+          <input id="address-2" name="address" required="" size="40" type="text">
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label for="zip">Zip Code <abbr title="Required">*</abbr></label>
+          <input id="zip" name="zip" required="" size="5" type="text">
+        </div>
+        <div class="field">
+          -
+        </div>
+        <div class="field">
+          <input id="zip-2" name="zip" size="5" type="text">
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label for="city">City <abbr title="Required">*</abbr></label>
+          <input id="city" name="city" required="" size="20" type="text">
+        </div>
+        <div class="field">
+          <label for="state">State <abbr title="Required">*</abbr></label>
+          <select id="state">
+            <option>
+              NC
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="six-columns omega">
+      <div class="field">
+        <label for="protection-class">Protection Class <abbr title="Required">*</abbr></label>
+        <select id="protection-class">
+          <option>
+            1
+          </option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="distance-to-coast">Distance to Coast</label>
+        <input id="distance-to-coast" name="distance-to-coast" size="40" type="text">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><h2>Select / Checkbox z-Index Test</h2></legend>
+
+    <div class="field">
+      <label for="basic-select">Basic Select</label>
+
+      <div class="custom-select-wrapper">
+        <select id="basic-select" name="basic-select" tabindex="-1">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
+
+        <div class="custom-select" tabindex="0">
+          <div class="custom-select-text" data-placeholder="--Choose One--"></div>
+          <ul class="custom-select-list">
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="1">Option 1</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="2">Option 2</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="3">Option 3</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="4">Option 4</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="5">Option 5</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="6">Option 6</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="7">Option 7</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="8">Option 8</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label for="basic-select2">Basic Select</label>
+
+      <div class="custom-select-wrapper">
+        <select id="basic-select2" name="basic-select2" tabindex="-1">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
+
+        <div class="custom-select" tabindex="0">
+          <div class="custom-select-text" data-placeholder="--Choose One--"></div>
+          <ul class="custom-select-list">
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="1">Option 1</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="2">Option 2</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="3">Option 3</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="4">Option 4</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="5">Option 5</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="6">Option 6</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="7">Option 7</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="8">Option 8</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="basic-select3">Basic Select</label>
+
+      <div class="custom-select-wrapper">
+        <select id="basic-select3" name="basic-select3" tabindex="-1">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
+
+        <div class="custom-select" tabindex="0">
+          <div class="custom-select-text" data-placeholder="--Choose One--"></div>
+          <ul class="custom-select-list">
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="1">Option 1</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="2">Option 2</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="3">Option 3</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="4">Option 4</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="5">Option 5</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="6">Option 6</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="7">Option 7</li>
+            <li tabindex="0" data-selected="false" data-disabled="false" data-value="8">Option 8</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="option-group">
+      <label for="deductible-basis2">Deductible Basis  <abbr title="Required">*</abbr></label>
+      <ul class="custom-option">
+        <li class="field">
+          <label for="deductible-basis2-1">Per Occurence</label>
+          <input id="deductible-basis2-1" name="deductible-basis2" required="" type="radio"><span class="custom-radio-input"></span>
+        </li>
+        <li class="field">
+          <label for="deductible-basis2-2">Per Building</label>
+          <input id="deductible-basis2-2" name="deductible-basis2" required="" type="radio"><span class="custom-radio-input"></span>
+        </li>
+      </ul>
+    </div>
+  </fieldset>
+</form>

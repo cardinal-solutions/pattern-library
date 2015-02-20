@@ -1,0 +1,148 @@
+// ----------------------------------------------------
+// Alert Setup
+// ----------------------------------------------------
+@mixin alert($color) {
+  @include border-radius($border-radius);
+  border-color: $color;
+  .alert-title {
+    @include background(linear-gradient(lighten($color, 10%), lighten($color, 3%)));
+    @include box-shadow(rgba(#fff, .3) 0 1px 0 inset);
+    @include text-shadow(darken($color, 10%) 0 1px 0);
+    background-color: $color;
+    border-bottom-color: $color;
+    color: #fff;
+    &:before {
+      @include background(linear-gradient(lighten($color, 5%), darken($color, 2%)));
+      @include box-shadow(rgba(#fff, .3) 0 1px 0 inset);
+      background-color: $color;
+      font-family: "cardinal Icons";
+      font-weight: normal; // prevents the browser from attempting a faux-bold
+      text-align: center;
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Warning
+// ----------------------------------------------------
+.alert-warning {
+  @include alert($alert-warning);
+  .alert-title, .alert-title:before {
+    color: darken($alert-warning, 60%);
+    @include text-shadow(none);
+  }
+  .alert-content {
+    background-color: lighten($alert-warning, 18%);
+  }
+  .alert-remove-control {
+    &:after {
+      @include box-shadow(rgba(#000, .2) 0 -1px 0);
+      background-color: rgba(#fff, .5);
+      color: darken($alert-warning, 40%);
+    }
+    &:hover:after {
+      color: darken($alert-warning, 50%);
+    }
+  }
+}
+// ----------------------------------------------------
+// Error
+// ----------------------------------------------------
+.alert-error {
+  @include alert($alert-error);
+  .alert-content {
+    background-color: lighten($alert-error, 35%);
+  }
+}
+// ----------------------------------------------------
+// Message
+// ----------------------------------------------------
+.alert-message {
+  @include alert($alert-message);
+  .alert-content {
+    background-color: lighten($alert-message, 63%);
+  }
+}
+// ----------------------------------------------------
+// Success
+// ----------------------------------------------------
+.alert-success {
+  @include alert($alert-success);
+  .alert-content {
+    background-color: lighten($alert-success, 55%);
+  }
+}
+
+// ----------------------------------------------------
+// Control
+// ----------------------------------------------------
+.alert-remove-control {
+  // @include transition(opacity, 250ms);
+  @include opacity(.3);
+  .alert-title:hover & {
+    @include opacity(1);
+  }
+  &:after {
+    @include border-radius($border-radius);
+    @include box-shadow(rgba(#000, .1) 0 -1px 0);
+    background-color: rgba(#fff, .2);
+    color: rgba(#fff, .8);
+    font-family: "cardinal Icons";
+  }
+  &:hover:after {
+    color: #fff;
+  }
+}
+
+// ----------------------------------------------------
+// Inline Alert
+// ----------------------------------------------------
+%inline-alert {
+  @include border-radius($border-radius);
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: $sub-baseline $sub-baseline*3 $sub-baseline $baseline*3;
+  position: relative;
+  &:before {
+    font-family: "cardinal Icons";
+    font-size: 1.3rem;
+    position: absolute;
+      top: 1px;
+      left: $sub-baseline*2;
+  }
+}
+.alert-success-inline {
+  @extend %inline-alert;
+  background-color: lighten($alert-success, 55%);
+  border-color: lighten(desaturate($alert-success, 50%), 40%);
+  color: $alert-success;
+  &:before {
+    content: "\2713";
+  }
+}
+.alert-message-inline {
+  @extend %inline-alert;
+  background-color: lighten($alert-message, 55%);
+  border-color: lighten(desaturate($alert-message, 50%), 40%);
+  color: $alert-message;
+  &:before {
+    content: "\69";
+  }
+}
+.alert-warning-inline {
+  @extend %inline-alert;
+  background-color: lighten($alert-warning, 10%);
+  border-color: $alert-warning;
+  &:before {
+    content: "\2623";
+  }
+}
+.alert-error-inline {
+  @extend %inline-alert;
+  background-color: lighten($alert-error, 30%);
+  border-color: lighten(desaturate($alert-error, 50%), 20%);
+  color: $alert-error;
+  &:before {
+    content: "\2620";
+  }
+}

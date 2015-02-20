@@ -1,0 +1,57 @@
+.horizontal-fields ul.progress-bar {
+  margin-bottom: $baseline*4;
+  margin-left: 0;
+}
+
+.progress-bar {
+  @include clear;
+  counter-reset: step;
+  line-height: $baseline*2.5;
+  list-style:none;
+  margin: $baseline 0 $baseline*4 $baseline;
+  padding:0;
+  a {
+    position: absolute;
+      top: -$baseline;
+      right: 0;
+      bottom: -$baseline;
+      left: -$baseline;
+  }
+  li {
+    float: left;
+    font-size: 13px;
+    font-weight: 700;
+    list-style-type: none;
+    position: relative;
+    width: auto;
+    padding: 0 $baseline*3 0 $baseline*3.5;
+    display: inline-block;
+    &:before {
+      content: counter(step, decimal);
+      counter-increment: step;
+      display: block;
+      font-size: 18px;
+      line-height: $baseline*3.2;
+      width: $baseline*3.2;
+      text-align: center;
+      position:absolute;
+        left:-$baseline;
+        top:-$baseline/1.3;
+    }
+    &.completed {
+      &:before {
+        font-family:"cardinal Icons";
+        content:"\2714"; //checkmark
+        font-size: 18px;
+      }
+      &:hover {
+        &:before {
+          font-family: "cardinal Icons";
+          font-size: 18px;
+          content:"\270e"; // pencil/edit
+          text-indent: 3px;
+        }
+      }
+    }
+  }
+}

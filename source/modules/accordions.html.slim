@@ -1,0 +1,40 @@
+---
+title: "Accordions: Modules"
+id: modules
+testing:
+  - module: "jquery.cardinal.accordion"
+---
+h1 Accordions
+
+p Accordions allow sections of content to be placed in collapsible containers. As one container opens any previously opened containers will close. The accordion is comprised of two primary pieces:
+
+h2 Usage
+
+dl.styleguide-usage
+  dt Wrapper
+  dd To set up an accordion create an element to wrap the items that will go inside the accordion and give is a class #{inline_code(".accordion")}. The wrapper will grow to the width of it's parent container automatically. It's not recommended to set a fixed width on the accordion but it can be done.
+
+  dt Action
+  dd The call to action or portion of the accordion that can be clicked or tapped to open its' associated content. Each action requires the class #{inline_code(".accordion-action")}.
+
+  dt Panel
+  dd The panel is simply a container that can wrap any type any content from tabs sets, form elements to basic content. The panel element should be an immediate sibling to the action. The panel requires the class #{inline_code(".accordion_panel")}.
+
+  dt Managing State
+  dd The open/closed state of an action and its' associated panel are determined by using the data attribute #{inline_code("data-active")}. Both the action and the panel are required to have the data attribute. The attribute takes the boolean values #{inline_code("true")}/#{inline_code("false")}.
+
+  dt JavaScript
+  dd The accordion requires the plugin #{inline_code"jquery.cardinal.accordion.js"}.
+
+section.styleguide-module-details
+  .tabs.styleguide-tabs
+    li.tab-item.active: a href="#" Example
+    li.tab-item: a href="#" JavaScript
+
+  .tab-content-container.styleguide-tab-content-container
+    .tab-content
+      = live_example('/modules/_code-examples/basic-accordion-html')
+      = code_example('/modules/_code-examples/basic-accordion-html', 'html')
+
+    .tab-content
+      = code_example( "/modules/_code-examples/basic-accordion-js", "javascript" )

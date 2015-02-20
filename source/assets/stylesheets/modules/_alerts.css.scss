@@ -1,0 +1,78 @@
+// ----------------------------------------------------
+// Wrapper
+// ----------------------------------------------------
+.alert-warning,
+.alert-error,
+.alert-message,
+.alert-success {
+  border-width: 1px;
+  border-style: solid;
+  margin: 0;
+  padding: 0;
+  @include clear;
+}
+.alert-title,
+.alert-content {
+  display: block;
+  margin: 0;
+  padding: $baseline;
+  position: relative;
+}
+
+// ----------------------------------------------------
+// Title
+// ----------------------------------------------------
+.alert-title {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: $baseline $baseline*4 $baseline $baseline*6;
+  &:before {
+    content: "";
+    font-size: 24px;
+    line-height: 1.9em;
+    position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    width: $baseline*5;
+    .alert-message & {
+      content: "\69";
+    }
+    .alert-warning & {
+      content: "\2623";
+    }
+    .alert-error & {
+      content: "\2620";
+    }
+    .alert-success & {
+      content: "\2713";
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Control
+// ----------------------------------------------------
+.alert-remove-control {
+  position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  width: $baseline*3;
+  text-indent: -9999px;
+  &:after {
+    content: '\2716';
+    font-size: .6em;
+    height: $sub-baseline*5;
+    line-height: $sub-baseline*5;
+    margin-top: -$sub-baseline*2.5;
+    padding: 0 $sub-baseline 0 5px;
+    position: absolute;
+      top: 50%;
+      right: $baseline;
+    text-align: center;
+    text-indent: 0;
+  }
+}

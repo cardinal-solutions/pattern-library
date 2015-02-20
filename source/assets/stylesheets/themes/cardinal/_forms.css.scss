@@ -1,0 +1,233 @@
+// ----------------------------------------------------
+// Form Styles
+// ----------------------------------------------------
+%form-element-interaction-states {
+  @include box-shadow(transparent 0 0 10px, lighten($border-color, 10%) 0 1px 2px inset, #fff 0 1px 0);
+  @include transition(all, 250ms);
+  background-color: #fff;
+  border-collapse: separate;
+  border: 1px solid $border-color;
+  &[required],
+  &[data-required="true"] {
+    background-color: lighten($alert-warning, 15%);
+    border-color: darken($alert-warning, 10%);
+  }
+  &:focus,
+  &.focus,
+  &[data-focus="true"],
+  &.k-state-focused,
+  &:hover,
+  &.hover,
+  &[data-hover="true"],
+  &.k-state-hover {
+    @include box-shadow(lighten(desaturate($alert-message, 40%), 20%) 0 0 10px, lighten($border-color, 10%) 0 1px 2px inset, #fff 0 1px 0);
+    border-color: $alert-message;
+    outline: none;
+  }
+  &[disabled="disabled"],
+  &[disabled],
+  &.disabled,
+  &[data-disabled="true"],
+  fieldset[disabled] &,
+  &.k-state-disabled {
+    background-color: lighten($border-color, 16%);
+    &:focus, &.focus,
+    &:hover, &.hover {
+      border-color: $border-color;
+      @include box-shadow(none);
+    }
+  }
+}
+
+.field {
+  input:not([type="checkbox"]),
+  input:not([type="radio"]),
+  textarea {
+    @include border-radius($border-radius);
+    @extend %form-element-interaction-states;
+  }
+}
+
+.field input[type="search"] {
+  @include border-radius($baseline);
+}
+
+// fieldset
+// ----------------------------------------------------------------
+fieldset {
+  border: 1px solid $border-color;
+  margin: 0 0 $baseline*2;
+  padding: $baseline;
+}
+
+legend {
+  margin: 0;
+  padding: 0;
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+// Help Icon
+// ----------------------------------------------------------------
+.help-icon {
+
+}
+
+// Help Text
+// ----------------------------------------------------------------
+.help-text {
+  color: $text-color-alt;
+}
+
+// Required
+// ----------------------------------------------------------------
+abbr[title] {
+  color: $alert-error;
+}
+
+// Error / Invalid Fields
+// ----------------------------------------------------------------
+.invalid {
+  label {
+    color: $alert-error;
+  }
+  input[type],
+  input[type][required],
+  textarea[required],
+  .custom-checkbox-input,
+  .custom-radio-input,
+  .custom-select {
+    border-color: $alert-error;
+    &:hover, &:focus, &.hover, &.focus {
+      border-color: $alert-error;
+      @include box-shadow(lighten($alert-error, 10%) 0 0 10px, lighten($border-color, 10%) 0 1px 2px inset, #fff 0 1px 0);
+    }
+  }
+  .error {
+    color: #fff;
+    background-color: $alert-error;
+    @include border-radius($baseline*2);
+    &:after {
+      font-family: "cardinal Icons";
+    }
+  }
+}
+
+// Custom Options (checkboxes & radio buttons)
+// ----------------------------------------------------------------
+.custom-checkbox-input,
+.custom-radio-input {
+  @extend %form-element-interaction-states;
+}
+
+.custom-checkbox-input {
+  &.checked:after {
+    background-color: transparent;
+    content: "\2714";
+    color: $blue;
+    font-family: "cardinal Icons";
+  }
+}
+
+.custom-radio-input {
+  @include border-radius($baseline);
+  &.checked:after {
+    background-color: $blue;
+    @include border-radius($baseline);
+  }
+}
+
+// ----------------------------------------------------------------
+// Custom Select
+// ----------------------------------------------------------------
+.custom-select {
+  @extend %form-element-interaction-states;
+  @include border-radius($border-radius);
+  @include background-image(linear-gradient(lighten($border-color, 15%), lighten($border-color, 10%)));
+  cursor: pointer;
+  &[data-type="basic"] {
+    &:before {
+      @include arrow(top, darken($border-color, 20%), 3px);
+    }
+    &:after {
+      @include arrow(bottom, darken($border-color, 20%), 3px);
+    }
+  }
+  &[data-type="typeahead"] {
+    &:after {
+      @include arrow(bottom, darken($border-color, 20%), 4px);
+    }
+  }
+  &[data-required="true"] {
+    @include background-image(linear-gradient(lighten($alert-warning, 15%), lighten($alert-warning, 10%)));
+  }
+  &[data-disabled="true"] {
+    @include background-image(linear-gradient(lighten($border-color, 20%), lighten($border-color, 15%)));
+    border-color: lighten($border-color, 10%);
+    color: $border-color;
+    .custom-select-clear, &:before, &:after {
+      @include opacity(0);
+    }
+  }
+}
+.custom-select-clear {
+  font-weight: bold;
+  @include opacity(.6);
+  &:hover {
+    color: $blue;
+    @include opacity(1);
+  }
+}
+.custom-select-list {
+  // @extend %form-element-interaction-states;
+  // border: 1px solid $border-color;
+  border-collapse: separate;
+  [data-type="basic"] & {
+    @include border-radius($border-radius);
+    @include box-shadow(#000 0 2px 10px);
+    background-color: #fff;
+  }
+  [data-type="typeahead"] & {
+    li {
+      @include border-radius($border-radius);
+    }
+  }
+  li{
+    &:first-child {
+      @include border-top-radius($border-radius);
+    }
+    &:last-child {
+      @include border-bottom-radius($border-radius);
+    }
+    a:focus,
+    &:focus,
+    &[data-focus="true"] {
+      background-color: $alert-message;
+      color: #fff;
+      outline: none;
+    }
+    // When the custom select menu opens up focus is
+    // forced to the currently selected item in the list
+    // Because of the :focus pseudo selector it remains
+    // highlighted. This forces the highlight to go away
+    // as other items of the list are hovered over.
+    &[data-focus="false"] {
+      background-color: transparent !important;
+      color: $text-color !important;
+    }
+    &[data-selected="true"]:before {
+      content: "\2714";
+      font-family: "cardinal Icons";
+    }
+    &[data-disabled="true"] {
+      color: #999 !important;
+      &:hover {
+        background-color: transparent;
+        color: #999;
+      }
+    }
+  }
+}

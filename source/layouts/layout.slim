@@ -1,0 +1,144 @@
+doctype html
+
+html class="no-js" lang="en"
+
+  head
+    meta charset="utf-8"
+
+    / Always force latest IE rendering engine or request Chrome Frame
+    meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
+
+    / Use title if it's in the page YAML frontmatter
+    title #{current_page.data.title}
+    meta name="description" content="#{current_page.data.description}"/
+
+    meta name="viewport" content="width=device-width"
+
+    // tmp sites from Cardinal to see what's causing breaking issues
+    
+
+    // Global and themes
+    == stylesheet_link_tag "kendo/kendo", "scaffold", "themes/styleguide", "themes/cardinal/cardinal"
+    == javascript_include_tag "libs/modernizr"
+
+    - if current_page.data.testing
+      == stylesheet_link_tag "testing/jasmine"
+
+  body#styleguide class="#{page_classes}"
+    #styleguide-container
+      article#styleguide-article role="main"
+        == yield
+
+        / - if current_page.data.testing
+          section#jasmine-tests
+
+      #styleguide-aside
+        / header.cardinal-logo
+        /   h2: a href="/"
+
+        nav#styleguide-nav-primary role="navigation"
+            header#code-standards-header: h3= link_to_active_parent "Code Standards", "/code-standards/"
+            ul#code-standards-nav
+              / li= link_to_active "Markup", "/code-standards/markup/"
+              li= link_to_active "HTML", "/code-standards/html/"
+              li= link_to_active "CSS", "/code-standards/css/"
+              li= link_to_active "JavaScript", "/code-standards/javascript/"
+              li= link_to_active "Responsive Web Design", "/code-standards/responsive-web-design/"
+              li= link_to_active "Accessibility", "/code-standards/accessibility/"
+              li= link_to_active "Performance", "/code-standards/performance/"
+              li= link_to_active "Modules", "/code-standards/modules/"
+              li= link_to_active "Sass", "/code-standards/sass/"
+
+            header#base-header: h3= link_to_active_parent "Base", "/base/"
+            ul#base-nav
+              / li= link_to_active "Emphasis", "/base/emphasis/"
+              li= link_to_active "Grids", "/base/grids/"
+              li= link_to_active "Headings", "/base/headings/"
+              li= link_to_active "Links", "/base/links/"
+              li= link_to_active "Lists", "/base/lists/"
+              / li= link_to_active "Paragraphs", "/base/paragraphs/"
+              / li= link_to_active "Tables", "/base/tables/"
+
+
+            header#modules-header: h3= link_to_active_parent "Modules", "/modules/"
+            ul#modules-nav
+              li= link_to_active "Accordions", "/modules/accordions/"
+              li= link_to_active "Action Prompt", "/modules/action-prompt/"
+              li= link_to_active "Alerts", "/modules/alerts/"
+              / li= link_to_active "Badges", "/modules/badges/"
+              li= link_to_active "Buttons", "/modules/buttons/"
+              / li= link_to_active "Breadcrumbs", "/modules/breadcrumbs/"
+              li= link_to_active "Checkbox List", "/modules/checkbox-list/"
+              / li= link_to_active "Collapsible", "/modules/collapsible/"
+              / li= link_to_active "Carousels", "/modules/carousels/"
+              / li= link_to_active "Dropdowns", "/modules/dropdowns/"
+              li
+                = link_to_active "Forms", "/modules/forms/"
+                ul
+                  li= link_to_active "Checkbox & Radio", "/modules/forms/option-fields/"
+                  li= link_to_active "Fieldset", "/modules/forms/fieldset/"
+                  li= link_to_active "File Upload", "/modules/forms/file-upload/"
+                  li= link_to_active "Grouping Fields", "/modules/forms/field-group/"
+                  li= link_to_active "Select", "/modules/forms/basic-select/"
+                  li= link_to_active "Typeahead Select", "/modules/forms/typeahead-select/"
+                  li= link_to_active "Text Input", "/modules/forms/basic-input/"
+                  li= link_to_active "Textarea", "/modules/forms/textarea/"
+                  li= link_to_active "Kendo Combobox", "/modules/forms/kendo-combobox/"
+                  li= link_to_active "Kendo Dropdown", "/modules/forms/kendo-dropdown/"
+                  li= link_to_active "Kendo Datepicker", "/modules/forms/kendo-datepicker/"
+                  li= link_to_active "Kendo Masked Textbox", "/modules/forms/kendo-masked-textbox/"
+                  / li= link_to_active "Kendo Multiselect", "/modules/forms/kendo-multiselect/"
+              li= link_to_active "Icons", "/modules/icons/"
+              li= link_to_active "Kendo Tooltip", "/modules/kendo-tooltip/"
+              / li= link_to_active "Labels", "/modules/labels/"
+              / li= link_to_active "Lists", "/modules/lists/"
+              / li= link_to_active "Media", "/modules/media/"
+              / li= link_to_active "Modals", "/modules/modals/"
+              / li= link_to_active "Navigation", "/modules/navigation/"
+              / li= link_to_active "Pagination", "/modules/pagination/"
+              li= link_to_active "Page Push", "/modules/pagepush/"
+              / li= link_to_active "Panels", "/modules/panels/"
+              / li= link_to_active "Popovers", "/modules/popovers/"
+              li= link_to_active "Progress Bars", "/modules/progress-bar/"
+              li= link_to_active "Tabs", "/modules/tabs/"
+              li= link_to_active "Tables", "/modules/tables/"
+              / li= link_to_active "Thumbnails", "/modules/thumbnails/"
+              / li= link_to_active "Tooltips", "/modules/tooltips/"
+              / li= link_to_active "Wells", "/modules/wells/"
+
+            header#themes-header: h3= link_to_active_parent  "Themes", "/themes/"
+            ul#themes-nav
+              / li= link_to_active "/themes/graybox/", "Graybox"
+              / li= link_to_active "/themes/blueprint/", "Blueprint"
+              li
+                = link_to_active "Cardinal", "/themes/Cardinal/"
+                ul
+                  li= link_to_active "Colors", "/themes/Cardinal/colors/"
+
+            header#examples-header: h3= link_to_active_parent  "Examples", "/examples/"
+            ul#examples-nav
+              li= link_to_active  "Dashboard", "/examples/dashboard/"
+              li= link_to_active  "Forms and Mods", "/examples/forms-and-mods/"
+              li= link_to_active  "Subjectivities", "/examples/subjectivities/"
+              li= link_to_active  "Premium", "/examples/premium/"
+              li= link_to_active  "Taxes and Fees", "/examples/taxes-and-fees/"
+              li= link_to_active  "Review Quote", "/examples/review-quote/"
+              / li= link_to_active "/themes/blueprint/", "Blueprint"
+
+      / footer#styleguide-footer role="contentinfo" Styleguide
+
+
+    == javascript_include_tag "libs/jquery", "libs/kendo.web.min", "modules/forms-accessible-options", "modules/jquery.cardinal.listfilter", "modules/jquery.cardinal.select", "modules/jquery.cardinal.tabs", "modules/jquery.cardinal.accordion", "modules/jquery.cardinal.collapsible", "modules/jquery.cardinal.alert", "modules/jquery.cardinal.pagepush", "modules/jquery.cardinal.fileupload", "global"
+
+    - if current_page.data.testing
+      == javascript_include_tag "testing/jasmine.js", "testing/jasmine-html.js", "testing/jasmine.jquery.js", "testing/jasmine-init.js"
+
+      - current_page.data.testing.each do |jasmine|
+        == javascript_include_tag "testing/specs/#{jasmine.module}.spec"
+
+    / Google Analytics
+    / javascript:
+    /   var _gaq=[['_setAccount','UA-xxxxxxx'],['_trackPageview']];
+    /   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    /   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    /   s.parentNode.insertBefore(g,s)}(document,'script'));

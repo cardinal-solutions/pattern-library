@@ -1,0 +1,48 @@
+- name: Up Arrow
+  entity: 2191
+- name: Right Arrow
+  entity: 2192
+- name: Left Arrow
+  entity: 2190
+- name: Down Arrow
+  entity: 2193
+- name: Edit
+  entity: 270e
+- name: Edit Alt
+  entity: 2710
+- name: Exclamation
+  entity: 21
+- name: Exclamation Alt1
+  entity: 2622
+- name: Exclamation Alt2
+  entity: 2620
+- name: Exclamation Alt3
+  entity: 2623
+- name: Plus
+  entity: 2b
+- name: Plus Alt
+  entity: 2295
+- name: Minus
+  entity: 2d
+- name: Minus Alt
+  entity: 2212
+- name: X
+  entity: 78
+- name: X Alt
+  entity: 2297
+- name: Checkmark
+  entity: 2714
+- name: Checkmark Alt
+  entity: 2713
+- name: Info
+  entity: 69
+- name: Trash
+  entity: e600
+- name: Copy
+  entity: e603
+- name: Download
+  entity: 261f
+- name: Upload
+  entity: 261d
+- name: Document PDF
+  entity: e604

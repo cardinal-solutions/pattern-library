@@ -1,0 +1,22 @@
+---
+title: "Forms - Fieldset: Modules"
+id: modules
+---
+
+section.styleguide-module-details
+  h2 Fieldset
+
+  p A #{inline_code('<fieldset>')} is used to group form elements together. Each #{inline_code('<fieldset>')} should also have a #{inline_code('<legend>')}.
+
+  form.horizontal-fields
+    = live_example('/modules/forms/code-examples/fieldset-html')
+    = code_example('/modules/forms/code-examples/fieldset-html', 'html')
+
+section.styleguide-module-details
+  h2 Disabled Fieldset
+
+  p The #{inline_code('disabled="disabled"')} attribute can be applied to a #{inline_code('<fieldset>')} element to disable each input as a group.
+
+  form.horizontal-fields
+    = live_example('/modules/forms/code-examples/fieldset-disabled-html')
+    = code_example('/modules/forms/code-examples/fieldset-disabled-html', 'html')

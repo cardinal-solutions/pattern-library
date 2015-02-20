@@ -1,0 +1,44 @@
+---
+title: "Forms - Basic Select: Modules"
+id: modules
+/ testing:
+  / - module: "jquery.cardinal.select"
+---
+
+section.styleguide-module-details
+  h2 Basic Select
+
+  p The basic select is a one-to-one UI replacement for the native select element so that a similar aesthetic can be created across all browsers. This module requires a native select element that will be replaced completely with an HTML/JavaScript driven module.
+
+  .tabs.styleguide-tabs
+    li.tab-item.active: a href="#" Default
+    li.tab-item: a href="#" Required
+    li.tab-item: a href="#" Error
+    li.tab-item: a href="#" Disabled
+    li.tab-item: a href="#" Concatenated
+
+  .tab-content-container.styleguide-tab-content-container
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/basic-select-html')
+        = code_example('/modules/forms/code-examples/basic-select-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/basic-select-required-html')
+        = code_example('/modules/forms/code-examples/basic-select-required-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/basic-select-error-html')
+        = code_example('/modules/forms/code-examples/basic-select-error-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/basic-select-disabled-html')
+        = code_example('/modules/forms/code-examples/basic-select-disabled-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/basic-select-concatenated-html')
+        = code_example('/modules/forms/code-examples/basic-select-concatenated-html', 'html')

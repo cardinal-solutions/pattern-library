@@ -1,0 +1,55 @@
+// -----------------------------------------------------------------------------
+// Tables
+// -----------------------------------------------------------------------------
+
+%table {
+  border-color: $border-color;
+  th {
+    background-color: lighten(desaturate($blue, 40%), 55%);
+  }
+  th, td, tr {
+    border-color: $border-color;
+  }
+  tfoot {
+    td {
+      font-weight: bold;
+    }
+  }
+}
+
+.table-base {
+  @extend %table;
+}
+.table-striped {
+  @extend %table;
+  tr:nth-child(even) {
+    background-color: lighten($border-color, 15%);
+  }
+}
+.table-hover {
+  @extend %table;
+  tbody {
+    tr:hover {
+      background-color: lighten($border-color, 15%);
+    }
+    td:hover {
+      background-color: lighten($border-color, 10%);
+    }
+  }
+}
+
+.table-condensed {
+  @extend %table;
+  th, td {
+    padding: $sub-baseline;
+  }
+}
+
+.table-simple {
+  td, th {
+    border-left-color: $border-color;
+  }
+  tr {
+    border-bottom-color: $border-color;
+  }
+}

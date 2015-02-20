@@ -1,0 +1,55 @@
+---
+title: "Icons: Modules"
+id: modules
+---
+h1 Icons
+
+ul.styleguide-icons
+  - data.icons.each do |icon|
+    li.icon
+      div class="icon-#{icon.name.downcase.tr(" ", "-")}"
+      .details
+        h3 #{icon.name} <small>(#{icon.entity})</small>
+        h4 .icon-#{icon.name.downcase.tr(" ", "-")}
+
+h2 Usage
+
+dl.styleguide-usage
+  dt Classes
+  dd Icons can be added to any element by adding the appropriate class name in the list of icons above. Note that currently icons have only been tested to be used on primary/secondary buttons and links.
+
+  dt Single Icons
+  dd An icon can be added to a lone button or link by simply adding the appropriate icon class.
+
+  dt Grouped Icons
+  dd A group of buttons or group of links that need icons should be wrapped in either the class #{inline_code(".button-group-inline")} or #{inline_code(".link-group-inline")}.
+
+
+section.styleguide-module-details
+  .tabs.styleguide-tabs
+    li.tab-item.active: a href="#" Single Link
+    li.tab-item: a href="#" Group of Links
+    li.tab-item: a href="#" Group of Inputs
+    li.tab-item: a href="#" Single Button
+    li.tab-item: a href="#" Group of Buttons
+
+  .tab-content-container.styleguide-tab-content-container
+    .tab-content
+      = live_example('/modules/_code-examples/icon-single-link-html')
+      = code_example('/modules/_code-examples/icon-single-link-html', 'html')
+
+    .tab-content
+      = live_example('/modules/_code-examples/icon-grouped-links-html')
+      = code_example('/modules/_code-examples/icon-grouped-links-html', 'html')
+
+    .tab-content
+      = live_example('/modules/_code-examples/icon-grouped-inputs-as-links-html')
+      = code_example('/modules/_code-examples/icon-grouped-inputs-as-links-html', 'html')
+
+    .tab-content
+      = live_example('/modules/_code-examples/icon-single-button-html')
+      = code_example('/modules/_code-examples/icon-single-button-html', 'html')
+
+    .tab-content
+      = live_example('/modules/_code-examples/icon-grouped-buttons-html')
+      = code_example('/modules/_code-examples/icon-grouped-buttons-html', 'html')

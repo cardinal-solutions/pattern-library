@@ -1,0 +1,64 @@
+---
+title: "Alerts: Modules"
+id: modules
+---
+h1 Alerts
+
+p Alerts are used to provide feedback to a user based on the urgency of the message that should be displayed. The recommended markup is provided but depending on the context the markup can be switched out as long as the correct classes are used.
+
+h2 Usage
+
+dl.styleguide-usage
+  dt Wrapper
+  dd To set up an alert create an element to wrap the items that will go inside the alert module and give is a class #{inline_code(".alert-message")}, #{inline_code(".alert-warning")}, #{inline_code(".alert-error")}, or #{inline_code(".alert-success")}. These classes will determine the correct icon and colors to use.
+  dt Title
+  dd The title bar of the alert is set with the class #{inline_code(".alert-title")}. The text for the title should be short and concise enough to fit on a single line.
+  dt Content
+  dd The content container is set with the class #{inline_code(".alert-content")} and is meant to be a wrapper. Any type of HTML elements can be placed inside the container including paragraphs, lists, and labels.
+  dt Remove Control
+  dd Optionally an extra control can be included on an alert that will remove it from the page when clicked. It requires the JavaScript module #{inline_code("jquery.cardinal.alert.js")}.
+
+
+section.styleguide-module-details
+  .tabs.styleguide-tabs
+    li.tab-item.active: a href="#" Message
+    li.tab-item: a href="#" Warning
+    li.tab-item: a href="#" Error
+    li.tab-item: a href="#" Success
+    li.tab-item: a href="#" JavaScript
+
+  .tab-content-container.styleguide-tab-content-container
+    .tab-content
+      = live_example('/modules/_code-examples/alert-message-html')
+      = code_example('/modules/_code-examples/alert-message-html', 'html')
+
+    .tab-content
+      = live_example('/modules/_code-examples/alert-warning-html')
+      = code_example('/modules/_code-examples/alert-warning-html', 'html')
+
+    .tab-content
+      = live_example('/modules/_code-examples/alert-error-html')
+      = code_example('/modules/_code-examples/alert-error-html', 'html')
+
+    .tab-content
+      = live_example('/modules/_code-examples/alert-success-html')
+      = code_example('/modules/_code-examples/alert-success-html', 'html')
+
+    .tab-content
+      = code_example( "/modules/_code-examples/alert-js", "javascript" )
+
+section.styleguide-module-details
+  h2 Alert with no content
+  p An alert message can be created with no content wrapper leaving only the title. The same classes #{inline_code(".alert-message")}, #{inline_code(".alert-warning")}, #{inline_code(".alert-error")}, or #{inline_code(".alert-success")} to display the correct color and icon for the alert.
+  p Because of the modular style of the alert module the core markup can be adjusted to be semantically correct without creating the need to create new CSS.
+
+  = live_example('/modules/_code-examples/alert-no-content-html')
+  = code_example('/modules/_code-examples/alert-no-content-html', 'html')
+
+section.styleguide-module-details
+  h2 Inline Alert
+  p An inline alert message can be created from any HTML element as long as the correct class is attached. The classes #{inline_code(".alert-inline-message")}, #{inline_code(".alert-inline-warning")}, #{inline_code(".alert-inline-error")}, or #{inline_code(".alert-inline-success")} can be used to display the correct color and icon for the alert.
+  p The content should be a single sentence or a short paragraph.
+
+  = live_example('/modules/_code-examples/alert-inline-html')
+  = code_example('/modules/_code-examples/alert-inline-html', 'html')

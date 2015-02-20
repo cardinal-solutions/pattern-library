@@ -1,0 +1,127 @@
+// ----------------------------------------------------
+// Combobox, Multiselect Adjustments
+// ----------------------------------------------------
+.field {
+  .k-combobox,
+  .k-multiselect,
+  .k-datepicker {
+    border: 0;
+    float: left;
+    margin-bottom: $sub-baseline;
+    input:not([type="checkbox"]),
+    input:not([type="radio"]) {
+      border: 0;
+      float: none;
+      height: 21px;
+      margin-bottom: 1px;
+      &:hover,
+      &:focus {
+        @include box-shadow(none);
+      }
+    }
+  }
+  .k-dropdown-wrap,
+  .k-multiselect-wrap,
+  .k-picker-wrap {
+    @extend %form-element-interaction-states;
+  }
+  &.invalid {
+    .k-dropdown-wrap,
+    .k-picker-wrap {
+      border-color: $alert-error;
+      &.k-state-focused,
+      &.k-state-hover {
+        border-color: $alert-error;
+        @include box-shadow(lighten($alert-error, 10%) 0 0 10px, lighten($border-color, 10%) 0 1px 2px inset, #fff 0 1px 0);
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Multiselect Adjustments
+// ----------------------------------------------------
+.field {
+  .k-multiselect {
+    select {
+      @include opacity(0);
+      display: block !important; // needed so the multiselect inherits the native selects width
+      height: 0;
+      margin: 0 $baseline*2 -4px 0;
+      overflow: hidden;
+    }
+    ul[role="listbox"] {
+      margin-bottom: 0;
+    }
+  }
+  &.invalid {
+    .k-multiselect-wrap {
+      border-color: $alert-error;
+    }
+    .k-multiselect {
+      &.k-state-focused,
+      &.k-state-hover {
+        .k-multiselect-wrap {
+          border-color: $alert-error;
+          @include box-shadow(lighten($alert-error, 10%) 0 0 10px, lighten($border-color, 10%) 0 1px 2px inset, #fff 0 1px 0);
+        }
+      }
+    }
+  }
+  .k-state-disabled {
+    .k-multiselect-wrap {
+      @include box-shadow(none);
+      cursor: no-drop;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Dropdown Adjustments
+// ----------------------------------------------------
+.field {
+  .k-dropdown {
+    float: left;
+    .k-state-hover .k-input {
+      color: $text-color-alt;
+    }
+  }
+  .k-dropdown-wrap {
+    height: $field-height;
+  }
+  .k-state-disabled {
+    cursor: no-drop;
+    cursor: not-allowed;
+  }
+}
+
+// ----------------------------------------------------
+// Datepicker Adjustments
+// ----------------------------------------------------
+.k-datepicker {
+  .k-icon {
+    position: relative;
+      top: -2px;
+  }
+}
+
+// ----------------------------------------------------
+// Numeric Adjustments
+// ----------------------------------------------------
+.k-numeric-wrap {
+  @include background-image(linear-gradient(transparent, transparent));
+  border-width: 0;
+}
+
+// ----------------------------------------------------
+// Tooltip Adjustments
+// ----------------------------------------------------
+.k-tooltip {
+  background-color: $cardinal-blue !important;
+  border-color: $cardinal-blue !important;
+  background-image: none !important;
+  .k-callout-s {
+    border-top-color: $cardinal-blue;
+  }
+}

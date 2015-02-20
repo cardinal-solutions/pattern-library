@@ -1,0 +1,57 @@
+---
+title: "Forms - Basic Input: Modules"
+id: modules
+---
+
+section.styleguide-module-details
+  h2 Basic Input
+
+  p The basic input will be the most common form element used for data entry. Each input should be wrapped in a #{inline_code('<div class="field">')} tag. This will allow us to maintain a consistent, modular HTML structure for form elements.
+
+  ul.styleguide-options
+    li <strong>Tie the label to the input <small>(required):</small></strong> Use the #{inline_code('for')} attribute on the #{inline_code('<label>')} and an #{inline_code('<id>')} on the #{inline_code('<input>')} with the same value. Now when you click on a label it'll bring focus to the field.
+    li <strong>Input Types <small>(required):</small></strong> The most common type of input will be #{inline_code('type="text"')}. Where appropriate you should use their other input types #{inline_code('type="email"')}, #{inline_code('type="url"')}, #{inline_code('type="number"')}, #{inline_code('type="date"')}, and #{inline_code('type="password"')}. This will help the inputs be more semantic, allow for easier error detection, and provide improved experiences on touch devices.
+    li <strong>Placeholder Information <small>(optional)</small></strong> If helpful, use the #{inline_code('placeholder="Informative Text"')} attribute to provide a bit more context or help to an input. An ideal placeholder should be no more than 2-5 words.
+    li <strong>Help Text <small>(optional)</small></strong> If more details need to be provided for an input #{inline_code('<p class="help-text"></p>')} is available. The help text should be concise and no more than a couple of sentences.
+    li <strong>Input Width:</strong> To adjust the width of an input the #{inline_code('size')} attribute should be used.
+
+  p To make a field required you just need to:
+
+  ol.styleguide-options
+    li Add #{inline_code('<abbr title="required">*</abbr>')} before the closing #{inline_code('</label>')}.
+    li Add the #{inline_code('required')} attribute on the #{inline_code("<input>")} element.
+
+  p When there is an error there are only a couple of things that are necessary:
+
+  ol.styleguide-options
+    li Add the #{inline_code(".invalid")} class to the parent #{inline_code('<div class="field">')}.
+    li Inject #{inline_code('<span class="error"></span>')} after the #{inline_code('<input>')}.
+
+  p Any input, textarea, or select can be disabled by appending the #{inline_code('disabled="disabled"')} attribute on the element.
+
+  .tabs.styleguide-tabs
+    li.tab-item.active: a href="#" Default
+    li.tab-item: a href="#" Required
+    li.tab-item: a href="#" Error
+    li.tab-item: a href="#" Disabled
+
+  .tab-content-container.styleguide-tab-content-container
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/basic-input-html')
+        = code_example('/modules/forms/code-examples/basic-input-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/basic-input-required-html')
+        = code_example('/modules/forms/code-examples/basic-input-required-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/basic-input-error-html')
+        = code_example('/modules/forms/code-examples/basic-input-error-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/basic-input-disabled-html')
+        = code_example('/modules/forms/code-examples/basic-input-disabled-html', 'html')

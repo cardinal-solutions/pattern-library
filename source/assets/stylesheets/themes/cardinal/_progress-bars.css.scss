@@ -1,0 +1,66 @@
+.progress-bar {
+  a {
+    background-color: rgba(#fff, 0);
+  }
+  li {
+    color: #999;
+    background-color: #ddd;
+    &:before {
+      background: none repeat scroll 0 0 #FFFFFF;
+      @include border-radius(100px);
+      border: 5px solid #ddd;
+      color: #999;
+    }
+    &.completed {
+      background-color:#bfbfbf;
+      color:#666;
+    }
+    &:last-child {
+      @include border-radius(50px);
+    }
+    &:first-child{
+      &.active{
+        background-color: #17aa28;
+      }
+      &:before {
+        border-color: #17aa28;
+      }
+    }
+    &.completed {
+      background-color:#bfbfbf;
+      &:before {
+         border-color:#bfbfbf;
+      }
+    }
+    
+    &.completed {
+      &:before {
+        color: #17aa28;
+      }
+      &:hover {
+        background-color: #666;
+        color: #fff;
+        &:before {
+          border-color: #666;
+          color: #666;
+        }
+      }
+    }
+    &.active {
+      background-color:#32558D;
+      color: #fff;
+      &:before {
+        color: #32558D;
+        border-color:#32558D;
+      }
+    }
+    &.active:first-child {
+      background-color:#17aa28;
+
+      &:before {
+        color: #17aa28;
+        border-color:#17aa28;
+      }
+    }
+  }
+}

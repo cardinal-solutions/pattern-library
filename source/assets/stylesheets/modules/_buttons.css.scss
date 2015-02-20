@@ -1,0 +1,75 @@
+// ----------------------------------------------------------------
+// Buttons
+// ----------------------------------------------------------------
+%basic-button-setup {
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  display: inline-block;
+  font-size: $base-font-size;
+  margin: 0;
+  outline: none;
+  text-decoration: none;
+}
+%button {
+  @extend %basic-button-setup;
+  height: $field-height*1.5;
+  line-height: $field-line-height*1.5;
+  padding: 0 $baseline*1.5;
+}
+
+%button-small{
+  @extend %basic-button-setup;
+  height: $field-height;
+  line-height: $field-line-height;
+  padding: 0 $baseline;
+}
+// ----------------------------------------------------------------
+// Primary Button
+// ----------------------------------------------------------------
+.button-primary {
+  @extend %button;
+}
+.button-primary-small {
+  @extend %button-small;
+}
+// ----------------------------------------------------------------
+// Secondary Button
+// ----------------------------------------------------------------
+.button-secondary {
+  @extend %button;
+}
+.button-secondary-small {
+  @extend %button-small;
+}
+
+// ----------------------------------------------------------------
+// Button Group
+// ----------------------------------------------------------------
+.button-group {
+  @include clear;
+  [class*='button'] {
+    margin-left: $sub-baseline;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .primary-actions {
+    float: right;
+    .button-primary,
+    .button-primary-small,
+    .button-secondary,
+    .button-secondary-small {
+      margin-left: $baseline;
+    }
+  }
+  .secondary-actions {
+    float: left;
+    .button-primary,
+    .button-primary-small,
+    .button-secondary,
+    .button-secondary-small {
+      margin-right: $baseline;
+    }
+  }
+}

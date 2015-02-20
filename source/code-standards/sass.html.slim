@@ -1,0 +1,194 @@
+---
+title: Markup
+id: 'code-standards'
+---
+h1 Sass and Compass
+
+p When writing CSS, use Sass with the Compass authoring framework. When compiling Sass and Compass, only use the Ruby gems to compile them or a tool that calls out to the Ruby gems. The scss syntax should be used exclusively when writing and sharing Sass. In order to ensure that all environments are the same, the minimum version of Ruby that should be used is 2.0.0 (standard on OS X version 10.9 and up) and all gems should be installed and versions managed by Bundler. When writing a Gemfile, versions should all be specified using the specifier to ensure that gems stay on the same major and minor versions, making upgrades in minor versions purposeful. Gems should be installed in to a vendor folder in each project, which should be ignored from version control. In addition to Bundler, there are a number of Compass extensions that should be used as a standard for a variety of needs.
+
+/ # Set this to the root of your project when deployed:
+/ http_path = "/"
+/ css_dir = "css"
+/ sass_dir = "sass"
+/ images_dir = "images"
+/ javascripts_dir = "js"
+/ fonts_dir = "fonts"
+
+/ # You can select your preferred output style here (can be overridden via the command line):
+/ # output_style = :compressed
+
+/ # To enable relative paths to assets via compass helper functions. Uncomment:
+/ relative_assets = true
+
+/ # To disable debugging comments that display the original location of your selectors. Uncomment:
+/ line_comments = false
+
+h3 Mixin/Extend Pattern
+
+p Mixins are best used when they don't needlessly duplicate the properties they write. We can do this using placeholder selectors and @extend. The only properties that should be directly written to the selector calling a mixin should be properties that have been directly altered due to mixin arguments. Any other properties should be extended. All arguments that have default values should have those default values controlled by globally namespaced !default variables to make overriding those defaults easy and accessible. All mixins that provide extends should also have an $extend optional argument, ideally as its last argument, also globally defaulted.
+
+p Mixins should also be divided up by purpose. While an omni mixin may be easier to write, having smaller mixins will make maintaining and using said mixins, as well as changing discrete parts of a rendered component, easier to do.
+
+p Let's take a look at a typical message component mixin as an example of how to re-write it using our mixin/extend pattern.
+
+/ // Sass
+/ @mixin message($color, $padding: .25em .5em, $width: 80%) {
+/   box-sizing: border-box;
+/   padding: $padding;
+
+/   width: $width;
+/   margin: 0 auto;
+
+/   border: 2px solid $color;
+/   background: mix(white, $color, 25%);
+/   color: mix(black, $color, 25%);
+/ }
+
+/ .message--STATUS {
+/     @include message(green);
+/ }
+
+/ .message--WARNING {
+/     @include message(yellow);
+/ }
+
+/ .message--ERROR {
+/     @include message(red);
+/ }
+/ /* CSS */
+/ .message--STATUS {
+/   box-sizing: border-box;
+/   padding: .25em .5em;
+/   width: 80%;
+/   margin: 0 auto;
+/   border: 2px solid green;
+/   background: #3f9f3f;
+/   color: #006000;
+/ }
+
+/ .message--WARNING {
+/   box-sizing: border-box;
+/   padding: .25em .5em;
+/   width: 80%;
+/   margin: 0 auto;
+/   border: 2px solid yellow;
+/   background: #ffff3f;
+/   color: #bfbf00;
+/ }
+
+/ .message--ERROR {
+/   box-sizing: border-box;
+/   padding: .25em .5em;
+/   width: 80%;
+/   margin: 0 auto;
+/   border: 2px solid red;
+/   background: #ff3f3f;
+/   color: #bf0000;
+/ }
+
+p While the single mixin may allow us to easily get the output we want, it does so at the cost of duplicating properties, and thus vastly bloating, our output CSS. This can be remedied almost entirely simply by rewriting our original mixin using our new mixin/extend pattern.
+
+/ // Sass
+/ $message-padding: .25em .5em !default;
+/ $message-width: 80% !default;
+/ $message-extend: true !default;
+
+/ @mixin message--CORE($padding: $message-padding, $width: $message-width, $extend: $message-extend) {
+/   // If we're not extending ($extend == false), we write properties directly
+/   @if not $extend {
+/     box-sizing: border-box;
+/     padding: $padding;
+
+/     width: $width;
+/     margin: 0 auto;
+
+/     // Border's color is based off of the `color` property, so we can write valid
+/     //  shorthand without the color. Border options aren't dynamic to clearly show a
+/     //  succinctly show this short hand method.
+/     border: 2px solid;
+/   }
+/   @else {
+/     // If we are extending ($extend == true), we extend the placeholder selector
+/     @extend %message--CORE;
+/     // If $padding is different than our default padding, we write that property
+/     @if $padding != $message-padding {
+/         padding: $padding;
+/     }
+/     // If $width is different than our default width, we write that property
+/     @if $width != $message-width {
+/       width: $width;
+/     }
+/   }
+/ }
+
+/ @mixin message-coloring($color) {
+/   border-color: $color;
+/   background: mix(white, $color, 25%);
+/   color: mix(black, $color, 25%);
+/ }
+
+/ %message--CORE {
+/   // We include the message-core mixin with $extend == false to force the properties to be written
+/   @include message--CORE($extend: false);
+/ }
+
+/ .message--STATUS {
+/   @include message--CORE;
+/   @include message-coloring(green);
+/ }
+
+/ .message--WARNING {
+/   @include message--CORE;
+/   @include message-coloring(yellow);
+/ }
+
+/ .message--ERROR {
+/   @include message--CORE;
+/   @include message-coloring(red);
+/ }
+/ /* CSS */
+/ .message--STATUS, .message--WARNING, .message--ERROR {
+/   box-sizing: border-box;
+/   padding: 0.25em 0.5em;
+/   width: 80%;
+/   margin: 0 auto;
+/   border: 2px solid;
+/ }
+
+/ .message--STATUS {
+/   border-color: green;
+/   background: #3f9f3f;
+/   color: #006000;
+/ }
+
+/ .message--WARNING {
+/   border-color: yellow;
+/   background: #ffff3f;
+/   color: #bfbf00;
+/ }
+
+/ .message--ERROR {
+/   border-color: red;
+/   background: #ff3f3f;
+/   color: #bf0000;
+/ }
+
+p While this approach certainly requires more work up front to build the mixins and extendables, it produces much more controlled and succinct output CSS, which is what we're aiming to write.
+
+h3 Partial Structure
+
+p Sass partials are a way for us to organize our styling knowledge into maintainable and easily grokable chunks. An example Sass partial structure is available in the folder sass.
+
+p At the root of our Sass folder is our style.scss file, which holds the core of our styling, and a no-script.scss file to provide a CSS fallback if scripting isn't available. In the sass folder, create an enhancements folder, a fallbacks folder, and a partials folder for stylesheets that provide enhanced styling for powerful browsers, fallback styling for less powerful browsers, and partials for all to draw from, each respectively.
+
+p Each feature being enhanced with or fallback being provided for should be named feature.scss and be placed into their respective folder; for instance, enhancements and fallbacks for CSS Animations would have a folder structure that looked something like sass/enhancements/css-animations.scss and sass/fallbacks/css-animations.scss.
+
+p The partials directory should be divided up into 3 sub directories, global, components, and layouts. Inside of global, there should be a folder a piece for variables, functions, mixins, and extendables, with partials to match. Inside each of those folders should go partials whose content should be made available globally and aren't component specific. For instance, global color and typographic variables, background/text color contrast mixins, ligature extendables, etc…
+
+p Both components and layouts should be built using a similar partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for variables, functions, mixins, and extendables. Each of these partials should hold styling knowledge specific to that component; for instance, variables could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in the example sass folder.
+
+p The Import Once extension should be utilized to prevent duplication of selectors for extendable classes. Mixins should share their naming convention with the object they are used to style.
+
+h3 Variable Naming
+
+p Global, private variables (ones that users should not touch but are needed to hold information for functions or mixins) should start with a capital letter as Sass variables are case sensitive.

@@ -1,0 +1,19 @@
+.accordion,
+.accordion-action,
+.accordion-panel {
+  border-color: $border-color;
+}
+
+.accordion-action {
+  background-color: lighten($border-color, 10%);
+  @include box-shadow(lighten($border-color, 15%) 0 1px inset);
+  &:before {
+    border-right-color: darken($border-color, 20%);
+  }
+  &[data-active="true"] {
+    @include box-shadow($border-color 0 1px 2px);
+    &:before {
+      border-top-color: darken($border-color, 20%);
+    }
+  }
+}

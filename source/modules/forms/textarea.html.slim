@@ -1,0 +1,48 @@
+---
+title: "Forms - Textarea: Modules"
+id: modules
+---
+
+section.styleguide-module-details
+  h2 Textarea
+
+  p Each textarea should be wrapped in a #{inline_code('<div class="field">')} tag. This allows for easier maintain and a consistent, modular HTML structure. To change the dimensions of the textarea the #{inline_code('rows')} & #{inline_code('cols')} attributes should be used.
+
+  .tabs.styleguide-tabs
+    li.tab-item.active: a href="#" Default
+    li.tab-item: a href="#" Required
+    li.tab-item: a href="#" Error
+    li.tab-item: a href="#" Disabled
+
+  .tab-content-container.styleguide-tab-content-container
+    .tab-content
+      .styleguide-example
+        form.horizontal-fields
+          = live_example( "/modules/forms/code-examples/textarea-html")
+
+      .styleguide-code
+        = code_example( "/modules/forms/code-examples/textarea-html", "html")
+
+    .tab-content
+      .styleguide-example
+        form.horizontal-fields
+          = live_example( "/modules/forms/code-examples/textarea-required-html")
+
+      .styleguide-code
+        = code_example( "/modules/forms/code-examples/textarea-required-html", "html")
+
+    .tab-content
+      .styleguide-example
+        form.horizontal-fields
+          = live_example( "/modules/forms/code-examples/textarea-error-html")
+
+      .styleguide-code
+        = code_example( "/modules/forms/code-examples/textarea-error-html", "html")
+
+    .tab-content
+      .styleguide-example
+        form.horizontal-fields
+          = live_example( "/modules/forms/code-examples/textarea-disabled-html")
+
+      .styleguide-code
+        = code_example( "/modules/forms/code-examples/textarea-disabled-html", "html")

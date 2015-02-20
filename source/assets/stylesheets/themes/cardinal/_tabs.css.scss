@@ -1,0 +1,43 @@
+.tab-item {
+  @include background(linear-gradient(lighten($border-color, 10%),lighten($border-color, 8%) 85%, lighten($border-color, 2%)));
+  @include border-top-radius($border-radius);
+  @include box-shadow(rgba(#fff, .5) 0 1px 0 inset);
+  border-color: $border-color;
+  background-color: lighten($border-color, 10%);
+  &:hover,
+  &:focus {
+    background-color: lighten($border-color, 5%);
+  }
+  &.active, &.active:hover, &.active:focus {
+    @include background(linear-gradient(lighten($border-color, 15%), #fff 50%));
+    @include border-top-radius($border-radius);
+    @include box-shadow(rgba(#fff, .8) 0 1px 0 inset, lighten($border-color, 10%) 0 0px 2px);
+    background-color: #fff;
+    border-bottom-color: #fff;
+    cursor: default;
+    position: relative;
+      z-index: 5;
+    &:after {
+      background-color: #fff;
+      content: "";
+      height: 2px;
+      position: absolute;
+        right: 0;
+        bottom: -2px;
+        left: 0;
+    }
+    a {
+      color: $text-color;
+    }
+  }
+  a {
+    color: rgba($text-color, .6);
+    &:hover {
+      color: $text-color;
+    }
+  }
+}
+.tab-content-container {
+  @include border-radius($border-radius);
+  border-color: $border-color;
+}

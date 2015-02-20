@@ -1,0 +1,14 @@
+.field {
+  input[type="text"] {
+    &[disabled][required] {
+      background-color: lighten($alert-warning, 15%);
+      border-color: darken($alert-warning, 10%);
+      &:focus, &.focus, &[data-focus="true"],
+      &:hover, &.hover, &[data-hover="true"], {
+        @include box-shadow(lighten(desaturate($alert-message, 40%), 20%) 0 0 10px, lighten($border-color, 10%) 0 1px 2px inset, #fff 0 1px 0);
+        border-color: $alert-message;
+        outline: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,496 @@
+@charset "utf-8";
+
+// ----------------------------------------------------
+// Setup
+// ----------------------------------------------------
+@import "setup/variables";
+@import "themes/cardinal/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/utilities";
+
+$styleguide-light-brown:     lighten(#E5DFDA, 10%);
+$styleguide-blue:            $blue;
+$styleguide-font-color:      $text-color;
+$styleguide-font-color-alt:  $text-color-alt;
+$styleguide-border-color:    $border-color;
+
+// ----------------------------------------------------
+// Styleguide Grid System Reset
+//
+// Overrides the base 12 column grid system being used
+// for the cardinal grid system.
+// ----------------------------------------------------
+
+#styleguide-container {
+  @include container;
+  max-width: 100%;
+}
+#styleguide-article {
+  @include span(9 of 12);
+  @include omega;
+  @include box-sizing(border-box);
+  padding: 2% 6% 2% 2%;
+}
+#HTMLReporter {
+  @include span(9 of 12);
+  @include omega;
+  @include box-sizing(border-box);
+  padding: 2% 6% 2% 2%;
+}
+
+#styleguide-aside {
+  @include span(3 of 12);
+}
+
+
+// Readjusts the cardinal grid to it can be
+// nested correctly within the styleguide
+// grid system examples.
+.grids {
+  @include container;
+  max-width: 100%;
+  .grid-row {
+    margin-bottom: $baseline;
+  }
+  .one-column,
+  .two-columns,
+  .three-columns,
+  .four-columns,
+  .five-columns,
+  .six-columns,
+  .seven-columns,
+  .eight-columns,
+  .nine-columns,
+  .ten-columns,
+  .eleven-columns {
+    background-color: #ccc;
+    line-height: $baseline*5;
+    height: $baseline*5;
+    text-align: center;
+  }
+}
+
+
+// ----------------------------------------------------
+// Root
+// ----------------------------------------------------
+html {
+  background-color: $styleguide-light-brown;
+}
+#styleguide {
+  background-color: $styleguide-light-brown;
+  color: $styleguide-font-color;
+}
+
+// ----------------------------------------------------
+// cardinal Logo
+// ----------------------------------------------------
+.cardinal-logo a {
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: $baseline*4;
+    width: 100%;
+  }
+}
+// ----------------------------------------------------
+// Styleguide Navigation
+// ----------------------------------------------------
+.modules #modules-nav,
+.code-standards #code-standards-nav,
+.themes #themes-nav,
+.base #base-nav{
+  display: block;
+}
+
+#styleguide-aside {
+  @include box-sizing(border-box);
+  background-color: $styleguide-blue;
+  border-right: 1px solid #fff;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  nav {
+    border-bottom: 1px solid lighten($styleguide-blue, 5%);
+  }
+  header {
+    text-transform: uppercase;
+    border-top: 1px solid lighten($styleguide-blue, 5%);
+    border-bottom: 1px solid darken($styleguide-blue, 5%);
+    a {
+      border: 0;
+    }
+  }
+  h2 {
+    margin: 0;
+    padding: 0;
+    a {
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
+  }
+  h3 {
+    font-size: 14px;
+    margin: 0;
+    position: relative;
+    a {
+      &:after {
+        content: "";
+        display: block;
+        margin-top: -6px;
+        position: absolute;
+          top: 50%;
+          right: 6%;
+        @include arrow(left, rgba(#fff, .5), 6px);
+      }
+      &.active:after {
+        margin-top: -3px !important;
+        @include arrow(bottom, rgba(#fff, .5), 6px);
+      }
+    }
+  }
+  ul {
+    background-color: darken($styleguide-blue, 5%);
+    border-top: 1px solid darken($styleguide-blue, 10%);
+    border-bottom: 1px solid darken($styleguide-blue, 10%);
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    // ul {
+    //   // background-color: darken($styleguide-blue, 13%);
+    //   // border-bottom: 1px solid darken($styleguide-blue, 40%);
+    //   display: block;
+    //   // padding: 0 10%;
+    //   a {
+    //     // @include border-radius(50px);
+    //     border: 0;
+    //     padding: 2% 0 2% 10%;
+    //     &:hover, &:focus{
+    //       // background-color: darken($styleguide-blue, 20%);
+    //       // padding-left: 14%;
+    //     }
+    //   }
+    // }
+    // .active + ul {
+    //   background-color: darken($styleguide-blue, 15%);
+    // }
+  }
+  a {
+    @include transition(all, 250ms);
+    border-top: 1px solid $styleguide-blue;
+    border-bottom: 1px solid darken($styleguide-blue, 10%);
+    color: rgba(#fff, .8);
+    display: block;
+    padding: 4% 3% 3% 5%;
+    text-decoration: none;
+    &:hover, &:focus{
+      color: #fff;
+      // padding-left: 10%;
+    }
+  }
+  li a:hover,
+  li a:focus {
+    background-color: darken($styleguide-blue, 7%);
+    border-top-color: darken($styleguide-blue, 3%);
+  }
+  li a.active {
+    background-color: darken($styleguide-blue, 13%);
+    border-top-color: darken($styleguide-blue, 18%);
+    cursor: default;
+    // padding-left: 10%;
+  }
+  li:first-child a {
+    border-top-width: 0;
+  }
+  li:last-child a{
+    border-bottom-width: 0;
+  }
+
+  // Nested Nav
+  ul ul {
+    @include box-shadow(darken($styleguide-blue, 15%) 0 0 5px inset);
+    background-color: darken($styleguide-blue, 10%);
+    border-top: 1px solid darken($styleguide-blue, 15%);
+    border-bottom: 1px solid darken($styleguide-blue, 15%);
+    display: block;
+    a {
+      border: 0;
+      padding: 2% 0 2% 10%;
+      &:hover, &:focus {
+        background-color: darken($styleguide-blue, 13%);
+      }
+      &.active {
+        background-color: darken($styleguide-blue, 18%);
+      }
+    }
+  }
+  ul .active + ul {
+    @include box-shadow(darken($styleguide-blue, 25%) 0 0 5px inset);
+    background-color: darken($styleguide-blue, 20%);
+    border-top: 1px solid darken($styleguide-blue, 25%);
+    border-bottom: 1px solid darken($styleguide-blue, 25%);
+    a {
+      &:hover, &:focus {
+        background-color: darken($styleguide-blue, 25%);
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Styleguide Content
+//
+// Sections within the article of the page that
+// outlines examples, use cases and options for
+// various modules in the styleguide
+// ----------------------------------------------------
+#styleguide-article,
+.styleguide-module-details {
+  > h1, > h2, > h3, > h4 {
+    color: $blue;
+  }
+  > h2 {
+    margin-top: 0;
+  }
+}
+.styleguide-module-details {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid $styleguide-border-color;
+  // margin-bottom: $baseline*3;
+  padding: $baseline*3 0;
+  &:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+// ----------------------------------------------------
+// Color Swatches
+// ----------------------------------------------------
+<% data.colors.each do |swatch| %>
+  .<%= swatch.name.downcase.tr(" ", "-") %> {
+    background-color: <%= swatch.hex %>;
+  }
+<% end %>
+
+.swatches {
+  @include clear;
+  font-size: 1em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  li {
+    @include border-radius($border-radius);
+    background-color: #fff;
+    padding-bottom: $baseline*2;
+  }
+  .color {
+    @include border-top-radius($border-radius);
+    margin-bottom: $baseline*2;
+    width: 100%;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  h3, h4 {
+    margin: 0;
+    padding: 0;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  h4 {
+    font-size: .8rem;
+    text-transform: uppercase;
+  }
+}
+
+.swatches {
+  li {
+    @include span(2 of 12);
+    &:nth-child(6n) {
+      @include omega;
+    }
+    margin-bottom: $baseline*2;
+    padding-bottom: $baseline;
+  }
+  .color {
+    margin-bottom: $baseline;
+  }
+}
+
+// ----------------------------------------------------
+// Dependency
+// ----------------------------------------------------
+.styleguide-dependency {
+  border: 1px solid $alert-warning;
+  background-color: lighten($alert-warning, 10%);
+  padding: $baseline;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// ----------------------------------------------------
+// Usage Details
+// ----------------------------------------------------
+.styleguide-usage {
+  dd {
+    border-bottom: 1px solid $styleguide-border-color;
+    margin-bottom: $baseline;
+    padding-bottom: $baseline;
+    &:last-child {
+      border: 0;
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Code Examples
+// ----------------------------------------------------
+code {
+  background-color: $inline-code-background;
+  // color: lighten($styleguide-font-color, 10%);
+  display: inline-block;
+  // margin-bottom: -$sub-baseline;
+  padding: 0 $sub-baseline;
+}
+.styleguide-options {
+  margin-bottom: $baseline*2;
+  li {
+    margin-bottom: $baseline/2;
+  }
+}
+
+.styleguide-tabs {
+  position: relative;
+}
+.styleguide-tab-content-container {
+  border: 0;
+  padding: 0;
+  position: relative;
+}
+
+.styleguide-example {
+  background-color: #fff;
+  border: 1px solid $styleguide-border-color;
+  margin-bottom: $sub-baseline;
+  padding: $baseline*4;
+  position: relative;
+  // &:before {
+  //   background-color: $styleguide-border-color;
+  //   content: "Example";
+  //   display: block;
+  //   font-size: .8em;
+  //   padding: $sub-baseline;
+  //   position: absolute;
+  //     top: 0;
+  //     left: 0;
+  // }
+}
+.styleguide-code {
+  background-color: #fff;
+  border: 1px solid $styleguide-border-color;
+  clear: both;
+  margin-bottom: $baseline;
+}
+
+// Code highlighting theme
+<%= Rouge::Themes::Base16::Solarized.render(:scope => '.highlight') %>
+
+// Code highlighting overrides
+.highlight {
+  margin: 0;
+  overflow-y: hidden;
+  .gutter {
+    background-color: lighten($styleguide-border-color, 10%);
+    border-right: 1px solid $styleguide-border-color;
+    padding: $baseline $baseline/2;
+    width: 30px;
+  }
+  .code {
+    padding: $baseline;
+  }
+  pre {
+    display: block;
+    white-space: pre;
+  }
+}
+
+// ----------------------------------------------------
+// Jasmine Tests
+// ----------------------------------------------------
+#jasmine-tests {
+  padding-bottom: $baseline*3;
+}
+
+// ----------------------------------------------------
+// Icons
+// ----------------------------------------------------
+.styleguide-icons {
+  max-width: 100%;
+  @include clear;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  h3, h4 {
+    margin: 0;
+    padding: 0;
+  }
+  h4 {
+    @include opacity(.7);
+  }
+  small {
+    @include opacity(.7);
+    display: block;
+    font-style: italic;
+    margin-bottom: $baseline;
+  }
+  .icon {
+    @include border-radius($border-radius);
+    background-color: #fff;
+    border: 1px solid $border-color;
+    float: left;
+    margin: 0 4% 4% 0;
+    text-align: center;
+    width: 100%/4 - 4%;
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+  [class*="icon-"] {
+    padding-left: 0 !important;
+    &:before {
+      color: $fuscous-grey;
+      display: inline-block;
+      font-size: 3em !important;
+      padding: $baseline*2 0;
+      position: relative !important;
+      top: 0 !important;
+    }
+  }
+
+  .details {
+    background-color: lighten($border-color, 15%);
+    border-top: 1px solid $border-color;
+    padding: $baseline/2 0;
+  }
+}
+.button-group-inline,
+.list-group-inline {
+  a {
+    margin-right: -3px;
+  }
+}

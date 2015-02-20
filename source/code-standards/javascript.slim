@@ -1,0 +1,39 @@
+---
+title: Markup
+id: 'code-standards'
+---
+h1 Interaction
+
+p What is better than a funny hat? A funny hat that spins. JavaScript adds interactivity to web pages, transforming them from static documents into living ones. JavaScript is a very flexible and powerful tool, but as Stan Lee says, "with great power there must also come -- great responsibility".
+
+h2 Style and Syntax
+
+p A most reasonable approach to JavaScript is the Airbnb JavaScript Style Guide. It provides an excellent set of rules and industry best practices for writing JavaScript, and it should be followed. In addition to the Airbnb guide, the following guidelines should also be followed:
+
+ul
+  li Functions must be declared before they are used
+  li All custom scripts should be wrapped in anonymous, self-executing functions with any external dependencies passed in.
+/ (function($) {
+/   var intro = 'Once upon a time, ',
+/       $princess = $('#princess'),
+/       $button = $('#button');
+
+/   function fairytale(name) {
+/     $princess.html(intro + name + '…');
+/   }
+
+/   $button.click(function() {
+/     fairytale($princess.text());
+/   });
+/ })(jQuery);
+
+h2 Libraries, Plugins, and Frameworks
+
+p When building site, very often a point will come when a decision must be made as to if a certain JavaScript library, plugin, or framework should be used. In addition to evaluating 3rd party scripts based on the quality of their code and their adherence to the JavaScript Style Guide, the following questions should be considered:
+
+ul
+  li Is the added functionality worth the weight? A lot can be accomplished with very little in JavaScript. If a minified version of a script is larger than 5KB, seriously consider if everything that it offers is needed or if something smaller and lighter weight can be just as effective. Is a 21.5KB slider library plus the weight of jQuery really worth the precious few bytes and HTTP requests needed for a fast and performant site?
+  li If the script builds off of another framework, such as a jQuery Plugin, examine the problem and determine if writing a custom solution can be as effective and lighter. Not everything needs to be a jQuery Plugin.
+  li If a script does not come with a minified version, determine if it can be minified. All scripts should be minified, so if a script being evaluated cannot, that should be taken into consideration.
+  li Is the script performant? Does it have performance benchmarks? If not, can it be benchmarked? If a script, regardless of weight, slows down a site significantly, its use should be reconsidered.
+  li Given browser support, is a heavy JavaScript library like jQuery or Dojo needed? Can paired down versions of those libraries be used? Does usage require the full support behind one of these libraries, or can a small DOM/AJAX library such as Chibi be effective?

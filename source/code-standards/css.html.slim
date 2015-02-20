@@ -1,0 +1,182 @@
+---
+title: CSS
+id: 'code-standards'
+---
+
+h1 CSS
+
+p As with HTML5, developers are strongly encouraged to use bits and pieces of CSS3 along with the whole of CSS2.1. Always ensure that older browsers degrade gracefully.
+
+section.styleguide-module-details
+  h2 Inline Styles
+
+  p We will always maintain a separation of content, presentation, and behavior. Never use inline#{inline_code('style=""')} attributes. They make maintenance and problem solving a nightmare, we won't like you, but more importantly it ties the presentation to the data it represents. Just don't do it.
+
+  p When debugging your CSS, you might see something like #{inline_code('style="display:none"')} as a result of some behavior. jQuery animation uses the style attribute as a default vehicle to hide and show and element when using functions like: #{inline_code('show()')}, #{inline_code('hide()')}, #{inline_code('fadeIn()')} or #{inline_code('fadeOut()')}.
+
+section.styleguide-module-details
+  h2 CSS Formatting
+  p Some developers prefer CSS properties in a single line, others use a block style, others indent. The intention of conforming to a single formatting style is to improve our efficiency as a team as we deal with CSS creation, maintenance, debugging and as we collaborate on multiple, large projects.
+
+  p For our team we will use block style formatting.
+
+  ul
+    li  Each selector will be on it's own line. If there are multiple selectors, the comma should be followed with a line break.
+    li  Property/value pairs will be on their own line, with one tab of indentation.
+    li  The closing brace should be on the same level of indentation as the selector it began with.
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-formatting" , "css")
+
+section.styleguide-module-details
+
+  h2 Naming conventions for selectors
+  p Use lowercase, separating words with hyphens when naming selectors. Don't use camelcase or underscores. Selectors should also be written to be human readable to describe what they style.
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-naming-convention" , "css")
+
+section.styleguide-module-details
+  h2 Properties and Values
+  p Help keep stylesheets organized, consistent and easy to maintain. When writing properties and values follow these requirements:
+  ul
+    li Each property should be organized alphabetically with the exception of vendor prefixes and position properties (#{inline_code('top')}, #{inline_code('right')}, #{inline_code('bottom')}, #{inline_code('left')}).
+    li Each property should be followed by a colon then a space.
+    li Don't use CAPS. All property values should be lowercase with the exception of font names.
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-attributes" , "css")
+
+section.styleguide-module-details
+  h2 Shorthand
+  p One of the quickest way to create bloated stylesheets is to not use shorthand. If you can use shorthand, do. For #{inline_code('margin')} and #{inline_code('padding')} keep in mind the TRBL acronym, which denotes the order that their values are defined. The values go in a clock-wise manner: #{inline_code('top')}, #{inline_code('right')}, #{inline_code('bottom')}, and #{inline_code('left')}. For a more in-depth writeup writing shorthand properties check out <a href="http://www.456bereastreet.com/archive/200502/efficient_css_with_shorthand_properties/">Efficient CSS with Shorthand properties</a> by Roger Johansson.
+
+  ul
+    li Backgrounds
+    li Borders
+    li Fonts
+    li Lists
+    li Margin
+    li Outline
+    li Padding
+
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-shorthand" , "css")
+
+
+section.styleguide-module-details
+  h2 Colors
+  p All colors should be written using hex values using lower-case. All colors should be written as tersely as possible. For example you should write #{inline_code('color: #333')} instead of #{inline_code('color: #333333')}. Never use RGB, though if the need arises RGBa can be used with a HEX or image fallback.
+
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-colors" , "css")
+
+
+section.styleguide-module-details
+  h2 Vendor Prefixes
+  p Vendor prefixes should be placed directly before the generic property they refer to.
+
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-vendor-prefixes" , "css")
+
+section.styleguide-module-details
+  h2 Positioning
+  p Position properties should be grouped together and placed after the specific type of positioning (#{inline_code('relative')}, #{inline_code('absolute')}, #{inline_code('static')}, etc).
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-positioning" , "css")
+
+section.styleguide-module-details
+  h2 Font Sizes - Relative vs. Absolute
+  p For many years using #{inline_code('px')} for font size was the standard. It gave early designers absolute control over font sizes as they transferred their design to HTML. As the web matured and we became more knowledgeable about accessibility issues, relative font sizes (#{inline_code('em')} or #{inline_code('%')}) gradually became the preferred unit. The need to switch to relative font sizes came about because of the lack of text scaling or text zooming support in Internet Explorer 6, which at the time had a large chunk of the browser market share.
+
+  p The web has continued to mature, and browsers along with it. Today recent versions of major browsers default to page zooming instead of text zooming. Instead of increasing only the font size, the entire page is zoomed in unison. Each element retains it's size & shape & reduces the need to have to compensate for text resizing.
+
+  p This means that it's no longer necessary to set text with relative text units for the sake of Internet Explorer 6. While there is nothing wrong with using relative font sizes, since font sizes are relative to their parent element, it requires calculating the correct relative size throughout a document. Web browsers have progressed to a point where that's no longer necessary.
+
+  p Use absolute units when setting font sizes. Basically if you set something at 14px in the document, it will be 14px regardless of the elements parent.
+
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-font-size" , "css")
+
+  p In addition, when declaring line-height it should be unit-less. Line-height doesn't inherit a % value of its parent element. Instead, it's based on a multiplier of the font-size.
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-line-height" , "css")
+
+section.styleguide-module-details
+  h2 Comments
+  p You are **strongly** encouraged to comment your CSS as much as you feel necessary. As previously stated it's preferred that you write CSS that's easily maintained and easy to read. Below are how different types of comments should be made:
+
+  h4 Single line comments
+
+  p Single line comments can be used to separate a block of CSS or appended after a CSS property/value pair to explain why you might do something a little odd.
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-comments" , "css")
+
+  h4 Multiple line comments
+  p For longer, multiple line comments that need more room, add a newline before and after the comment. Leave one line of space before the next block.
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-comments-multiline" , "css")
+
+  h4 Sections
+  p Use comments to denote a new section in the CSS. Key sections in the CSS should always be divided with a comment. Use a simple flag immediately before the header text so sections of CSS can be found easy when using quick search on a page.
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-comments-section" , "css")
+
+section.styleguide-module-details
+  h2 Reset
+  p A CSS reset is designed to reset various element styles to a baseline and reduce browser inconsistencies and allow. For Ally we will be using a modified version of a CSS reset based on the one used in <a href="http://html5boilerplate.com">HTML5 Boilerplate</a>.
+
+  h2 Understanding Specificity
+  p There are many selectors to take into account when calculating specificity, but for our purposes we're going to keep things simple. If you're interested in learning more about calculating specificity for conflicting rules read up on <a href="http://www.htmldog.com/guides/cssadvanced/specificity/">Specificity by Patrick Griffiths</a> or a <a href="http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html">Star Wars spin on specificity by Andy Clarke</a>.
+
+  p In it's most basic form specificity works like the following CSS rules, ordered from least specific to most specific. As you progress down the following rules specificity increases, overriding the preceding rule.
+
+  ol
+    li Type Selector (least specific) #{inline_code("p {color: #000}")}
+    li Type + Type Decedent Selector #{inline_code("div p {color: #333}")}
+    li Class Selector #{inline_code(".class {color: #666}")}
+    li Type + Class Selector #{inline_code("p.class {color: #555}")}
+    li Type + Type with a Class Selector #{inline_code("div p.class {color: #999}")}
+    li ID Selector #{inline_code("#id {color: #ccc}")}
+    li ID + Type Selector #{inline_code("#id p {color: #efefef;}")}
+
+section.styleguide-module-details
+  h2 Guidelines for Coding CSS
+  p There are some very basic guidelines we follow when it comes to specificity and avoiding or overriding conflicting CSS rules.
+
+  h4 1. Never use inline styles
+  p Using the #{inline_code('style')} attribute in an HTML tag goes against the core tenant of the separation of structure vs. content.
+
+  p Always create your styles in your CSS file even if the style itself is trivial. This makes for easier to maintain websites.
+
+  h4 2. Never use #{inline_code('!important')}
+  p Using #{inline_code('!important')} adds more complexity and creates more problems in your CSS than it solves. Each time you declare a rule with #{inline_code('!important')} and want to override it you have to declare another rule with a higher specificity with another #{inline_code('!important')} to override it.
+
+  h4 3. Make proper use of the cascade
+  p Let the cascade work for you and only be specific when you need to be. In other words use the least number of selectors possible to style an element. Keep in mind that:
+
+  ul
+    li being overly specific prevents you from being able to reuse CSS rules elsewhere
+    li the more specific your selectors are, the larger and more complex your stylesheet will become
+    li it's easier to be less specific from the start while adding specific rules as situations come up than it is to refactor later
+
+  p Don't write something like this:
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-overly-specific" , "css")
+
+  p When something like this will do.
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/css-specific-enough" , "css")
+
+section.styleguide-module-details
+  h2 Validation
+  p It's not recommended to spend excessive time validating your CSS with the W3C validator (especially if you're using vendor prefixes). As with HTML validation should be used to double-check that your css is well formed and to catch syntax errors.

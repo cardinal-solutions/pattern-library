@@ -1,0 +1,49 @@
+// ----------------------------------------------------------------
+// Headings
+// ----------------------------------------------------------------
+// Addresses font sizes and margins set differently in IE6/7
+// Addresses font sizes within 'section' and 'article' in FF4+, Chrome, S5
+// ----------------------------------------------------------------
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $text-color; // tmp to override cardinal styles
+  font-weight: bold; // tmp to override cardinal styles
+  margin: 0; // tmp to override cardinal styles
+  padding: 0; // tmp to override cardinal styles
+  small {
+    color: $dark-gray;
+    font-weight: normal;
+    font-size: 12px;
+  }
+}
+h1, .h1 {
+  font-size: $h1-font-size;
+  margin-bottom: $h1-margin;
+}
+
+h2, .h2 {
+  font-size: $h2-font-size;
+  margin-bottom: $h2-margin;
+}
+
+h3, .h3 {
+  font-size: $h3-font-size;
+  margin-bottom: $h3-margin;
+}
+
+h4, .h4 {
+  font-size: $h4-font-size;
+  margin-bottom: $h4-margin;
+}
+
+h5, .h5 {
+  color: $dark-gray;
+  font-size: $h5-font-size;
+  margin-bottom: $h5-margin;
+}
+
+h6, .h6 {
+  color: $dark-gray;
+  font-size: $h6-font-size;
+  margin-bottom: $h6-margin;
+}

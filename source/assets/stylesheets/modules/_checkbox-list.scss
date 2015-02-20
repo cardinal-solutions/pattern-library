@@ -1,0 +1,85 @@
+.list-striped {
+  margin-bottom: $baseline*3;
+  width: 100%;
+  colgroup {
+    .list-action {
+      width: 16px;
+    }
+    .list-id {
+      width: 120px;
+    }
+    .list-date {
+      width: 75px;
+    }
+    .list-download {
+      width: 130px;
+    }
+  }
+  tfoot {
+    [class*='button-'] {
+      margin-left: -$sub-baseline*4;
+    }
+  }
+  td {
+    padding: $sub-baseline*4 $sub-baseline*4 $sub-baseline*2 $sub-baseline*4;
+    position: relative;
+    vertical-align: top;
+  }
+  label,
+  .field label {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.4;
+    padding: 0;
+    width: auto;
+  }
+  td:last-child {
+    label {
+      width: auto;
+    }
+  }
+  input[type="checkbox"],
+  input[type="radio"] {
+    // cursor: pointer;
+    height: 16px;
+    width: 16px;
+    z-index: 10 !important;
+  }
+  .custom-checkbox-input,
+  .custom-radio-input,
+  input[type="checkbox"],
+  input[type="radio"] {
+    // position: relative;
+    // margin-left: -8px;
+    // margin-top: -9px;
+    position: absolute;
+    top: $sub-baseline*4;
+    left: $sub-baseline*4;
+  }
+  .custom-checkbox-input.checked:after {
+    top: 1px;
+    left: 2px;
+  }
+  input[type="text"] {
+    // display: block;
+    // margin-top: $sub-baseline;
+    margin-bottom: $sub-baseline*2;
+    width: 100%;
+  }
+  [class*="icon-"]:not([class*="button-"]) {
+    margin: (-$baseline) 0 (-$baseline) 0;
+    padding-left: 0;
+    &:before {
+      position: relative;
+      left: 0;
+      top: 4px;
+    }
+  }
+  label + span {
+    margin-left: $sub-baseline;
+  }
+  [class*="icon-document-pdf"]:not([class*="button-"]):before,
+  [class*="icon-trash"]:not([class*="button-"]):before {
+    font-size: 22px;
+  }
+}

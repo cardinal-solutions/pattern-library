@@ -1,0 +1,36 @@
+.new-breadcrumbs {
+  background-color: #efefef;
+  border: 1px solid #ccc;
+  list-style: none;
+  margin: 0 0 $baseline;
+  overflow: hidden;
+  padding: 0;
+}
+.new-breadcrumb-item {
+  display: inline-block;
+  a {
+    color: #333;
+    display: block;
+    padding: $baseline $baseline*3 $baseline $baseline*2;
+    position: relative;
+    text-decoration: none;
+    &:after {
+      @include border-radius(4px);
+      @include rotate(45deg);
+      border: 1px solid #ccc;
+      border-left: 0;
+      border-bottom: 0;
+      content: '';
+      height: 100px;
+      position: absolute;
+        top: -30px;
+        right: 15px;
+      width: 100px;
+    }
+  }
+  &:last-child a {
+    &:after {
+      display: none;
+    }
+  }
+}

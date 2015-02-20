@@ -1,0 +1,13 @@
+.list-striped {
+  tr:nth-child(even) {
+    td {
+      background-color: $light-gray;
+    }
+    td:first-child {
+      @include border-left-radius($border-radius);
+    }
+    td:last-child {
+      @include border-right-radius($border-radius);
+    }
+  }
+}

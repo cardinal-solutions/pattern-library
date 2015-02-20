@@ -1,0 +1,104 @@
+---
+title: HTML
+id: 'code-standards'
+---
+h1 HTML
+p Developers are strongly encouraged to use bits of pieces of HTML5 but should ensure that older browsers degrade gracefully. See our official browser support.
+
+section.styleguide-module-details
+  h2 Doctype
+  p Always use a doctype. Using a doctype forces a browser to render a page in "Standards Mode". To learn more about the history of the Doctype and different rendering modes you should read the work of Henri Sivonen, <a href="http://hsivonen.iki.fi/doctype/">Activating Browser Modes with Doctype</a>. HTML5 keeps the doctype nice and simple. Using the HTML5 doctype reduces the amount of code needed by dropping attributes. As another perk, there is no longer a need to use cdata to escape inline JavaScipt (no longer required to meet the XML strictness in XHTML).
+
+  .styleguide-code
+    / # = code_example( "/code-standards/code-examples/doctype" , "html")
+    - code_block("html") do
+      <!DOCTYPE html>
+
+  p.note Note: Even though we are using an HTML doctype all HTML will be coded to the <strong>strictness of XHTML</strong> This means that we will be writing all HTML as if we were writing XHTML.
+
+  ul
+    li Elements must be nested properly
+    li Syntax should be well-formed & every element should have closing tag, including self-closing elements
+    li All elements and attributes must be written in lowercase
+    li Attribute values should be surrounded by double or single quotes
+
+section.styleguide-module-details
+  h2 Document root
+  p Previously the root #{inline_code("<html>")} element on the page looked a little something like this #{inline_code('<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">')}. There's nothing wrong with still using a format like this but with HTML5 some parts are no longer necessary. The #{inline_code('xlmns')} attribute can now be dropped. HTML5 will work the same in all browsers whether this attribute is declared or not.
+
+  p The #{inline_code('xml:lang')} attribute is also a leftover from XHTML and isn't necessary using the HTML5 doctype. Drop them both, save a few bytes and you end up with something like this:
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/document-root" , "html")
+
+section.styleguide-module-details
+  h2 In the head
+  p Another benefit of HTML is the removal of a number of attributes from some of the elements in the #{inline_code('<head>')} that were required for validation, but aren't necessary for proper parsing by the browser.
+
+  p First up lets go over the use of the typical #{inline_code('<meta>')} element. The most common `meta` element was used to set the character encoding and set the HTTP headers and would look something like this #{inline_code('<meta http-equiv="Content-Type" content="text/html; charset=utf-8">')}. HTML5 makes this much simpler. For a full explanation on the reasoning behind the shortened syntax read <a href="http://lists.w3.org/Archives/Public/public-html/2007Jul/0550.html">Andrew Sidwell's explanation from the W3C archive</a>. The simple version is can now be written this way:
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/head-meta" , "html")
+
+  p.note Note: <b>Always</b> declare the character encoding on <b>every</b> HTML document.
+
+  p Up next we have #{inline_code('<link>')} relations. Link relations cover the syntax used for external resources like stylesheets, javascript and RSS feeds. The most common link relation is the one used for stylesheets. It used to look like this #{inline_code('<link rel="stylesheet" href="style.css" type="text/css" />')}. With HTML5 you can drop the #{inline_code('type')} attribute giving you:
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/stylesheet" , "html")
+
+  p The #{inline_code('<script>')} element follows a similar simplification. Typically a #{inline_code('script')} tag would look like #{inline_code('<script type="text/javascript" src="jquery.js"></script>')}. Just like the #{inline_code('link')} element the #{inline_code('type')} attribute can be dropped giving you:
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/javascript" , "html")
+
+  p There are some valid exceptions on what javascript should and shouldn't be placed in the #{inline_code('<head>')} of the HTML document. With the exception of libraries like Modernizr the rest of your javascript should be placed before the closing #{inline_code('</body>')} tag and the end of your HTML document. This provides a number of performance boosts. Because of the way web browsers work currently they must first download and execute javascript before content the content that follows is loaded. This can slow down or pause page load. I many cases you will only want javascript to be executed after pageload is complete.
+
+  p By placing javascript at the bottom of the page it ensures that the content is loaded first, allowing the user to start reading and interacting with the page while the rest of the javascript is being executed.
+
+  p.note Note: Even though writing inline javascript is frowned on it's worth noting that using the HTML5 doctype it's no longer necessary to have to wrap inline javascript in a #{inline_code('//<![CDATA[')} section.
+
+section.styleguide-module-details
+  h2 Self-closing Elements
+  p Even though we are using an HTML doctype, we will code to the strictness of XHTML. All tags must be properly closed. Self-closing elements mean that instead of having an opening and closing element like #{inline_code('<tag></tag>')}, instead they are closed on the first instance of the element like so #{inline_code('<tag />')}. A list of self closing elements are:
+
+  ul
+    li #{inline_code('<br />')}
+    li #{inline_code('<hr />')}
+    li #{inline_code('<meta />')}
+    li #{inline_code('<link />')}
+    li #{inline_code('<input />')}
+    li #{inline_code('<img />')}
+
+  p.note Note: Self-closing elements should be closed with a single space preceding the forward slash.
+
+section.styleguide-module-details
+  h2 Tags & Attributes
+  p Write all tags and attributes in lowercase. The attribute value should also be lowercase unless the data needs to be human readable. If so then proper title capitalization should be used.
+
+section.styleguide-module-details
+  h2 Quotes
+  p All attributes must have a value, and must use double-quotes. The following demonstrates the correct usage of quotes for attributes and their values:
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/form" , "html")
+
+section.styleguide-module-details
+  h2 Validation
+  p HTML pages should be verified against the W3C validator. Validation isn't indicative of concise, beautiful, semantic markup but it does help ensure the markup is at least well formed.
+
+section.styleguide-module-details
+  h2 Images Need ‘Alt’ Text
+  p The #{inline_code('<img>')} tag requires alt text to both validate and meet accessibility guidelines. The text in the alt attribute should be descriptive of what the image shows, or is trying to achieve, unless of the course the image is not critical.
+
+  p If the image is of a list bullet or other trivial icons, it is recommended to simply leave the alt attribute empty, but still present. A screenreader will then ignore it, as opposed to having to read out "bullet" 20 times.
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/images" , "html")
+
+section.styleguide-module-details
+  h2 Template
+  p The following snipped can be used to create a new HTML5 document. English is specified by default and doesn't contain the directional indicator #{inline_code('dir=ltr')} because it's the default.
+
+  .styleguide-code
+    = code_example( "/code-standards/code-examples/html-template" , "html")

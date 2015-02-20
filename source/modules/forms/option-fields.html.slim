@@ -1,0 +1,60 @@
+---
+title: "Forms - Checkbox & Radio Inputs: Modules"
+id: modules
+testing:
+  - module: "jquery.cardinal.options"
+---
+
+section.styleguide-module-details
+  h2 Checkbox & Radio Inputs
+
+  p Checkboxes and radio inputs will handle a single input or multiples as long as they use the correct markup.
+
+  ol.styleguide-options
+    li Checkboxes and radios are marked up as #{inline_code('<ul>')} instead of a #{inline_code('<div>')}.
+    li Wrap the list in #{inline_code('<div class="option-group">')}.
+    li To render the custom look-and-feel for the radio and checkbox inputs add a #{inline_code('<span>')} after the #{inline_code('<input>')} with the class #{inline_code('.custom-radio-input')} or #{inline_code('.custom-checkbox-input')}.
+    li Add the class #{inline_code('.custom-option')} to the parent #{inline_code('ul')}. This will hide the native input elements without breaking accessibility.
+    li The first #{inline_code('<label>')} before the #{inline_code('<ul>')} should use the #{inline_code('for')} attribute to tie it to the first checkbox or radio input.
+
+    p This module is dependent on the #{inline_code('forms-accessible-options.js')} JavaScript file. It's a jQuery plugin that does simple binding that ties basic interactions like hover, focus, and click events to the custom UI. The most efficient way to use the plugin is to scope things to #{inline_code('.custom-option')} the #{inline_code('.find')} the inputs and checkboxes within that subset of HTML. The limits having to traverse the DOM multiple times and provides speed increased when there are many radio and checkbox inputs in the UI.
+  p When there is an error on a group of checkboxes or radio inputs only a couple of things need to be added:
+
+  ol.styleguide-options
+    li Add the class #{inline_code('.invalid')} on the parent div #{inline_code('.option-group')}.
+    li Add #{inline_code('<span class="error"></span>')} after the list of checkboxes or radio buttons.
+
+  .tabs.styleguide-tabs
+    li.tab-item.active: a href="#" Default
+    li.tab-item: a href="#" Required
+    li.tab-item: a href="#" Error
+    li.tab-item: a href="#" Disabled
+    li.tab-item.javascript: a href="#" JavaScript
+
+  .tab-content-container.styleguide-tab-content-container
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/option-fields-html')
+        = code_example('/modules/forms/code-examples/option-fields-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/option-fields-required-html')
+        = code_example('/modules/forms/code-examples/option-fields-required-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/option-fields-error-html')
+        = code_example('/modules/forms/code-examples/option-fields-error-html', 'html')
+
+    .tab-content
+      form.horizontal-fields
+        = live_example('/modules/forms/code-examples/option-fields-disabled-html')
+        = code_example('/modules/forms/code-examples/option-fields-disabled-html', 'html')
+
+    .tab-content
+      = code_example( "/modules/forms/code-examples/option-fields-js", "javascript")
+
+
+
+

@@ -1,0 +1,17 @@
+.section-container-bordered,
+.section-container-bordered .sub-section-container,
+.sub-section-container {
+  @include border-radius($border-radius);
+  border-color: $border-color;
+}
+.sub-section-container {
+  background-color: $light-gray;
+}
+
+.summary-box {
+  @include border-radius($border-radius);
+  background-color: $light-gray;
+}
+.summary-extras {
+
+}
