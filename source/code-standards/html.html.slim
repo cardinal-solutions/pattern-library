@@ -5,6 +5,8 @@ id: 'code-standards'
 h1 HTML
 p Developers are strongly encouraged to use bits of pieces of HTML5 but should ensure that older browsers degrade gracefully. See our official browser support.
 
+p To ensure old browsers properly serve HTML5 content, use <a href="https://github.com/aFarkas/html5shiv">html5shiv</a>.
+
 section.styleguide-module-details
   h2 Doctype
   p Always use a doctype. Using a doctype forces a browser to render a page in "Standards Mode". To learn more about the history of the Doctype and different rendering modes you should read the work of Henri Sivonen, <a href="http://hsivonen.iki.fi/doctype/">Activating Browser Modes with Doctype</a>. HTML5 keeps the doctype nice and simple. Using the HTML5 doctype reduces the amount of code needed by dropping attributes. As another perk, there is no longer a need to use cdata to escape inline JavaScipt (no longer required to meet the XML strictness in XHTML).
@@ -83,6 +85,8 @@ section.styleguide-module-details
   .styleguide-code
     = code_example( "/code-standards/code-examples/form" , "html")
 
+  p In the case of boolean attributes like <code>controls</code>, <code>required</code>, <code>selected</code>, do not add values.
+
 section.styleguide-module-details
   h2 Validation
   p HTML pages should be verified against the W3C validator. Validation isn't indicative of concise, beautiful, semantic markup but it does help ensure the markup is at least well formed.
@@ -98,7 +102,7 @@ section.styleguide-module-details
 
 section.styleguide-module-details
   h2 Template
-  p The following snipped can be used to create a new HTML5 document. English is specified by default and doesn't contain the directional indicator #{inline_code('dir=ltr')} because it's the default.
+  p The following snippet can be used to create a new HTML5 document. English is specified by default and doesn't contain the directional indicator #{inline_code('dir=ltr')} because it's the default.
 
   .styleguide-code
     = code_example( "/code-standards/code-examples/html-template" , "html")
