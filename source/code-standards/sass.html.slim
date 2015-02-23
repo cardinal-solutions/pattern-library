@@ -4,7 +4,17 @@ id: 'code-standards'
 ---
 h1 Sass and Compass
 
-p When writing CSS, use Sass with the Compass authoring framework. When compiling Sass and Compass, only use the Ruby gems to compile them or a tool that calls out to the Ruby gems. The scss syntax should be used exclusively when writing and sharing Sass. In order to ensure that all environments are the same, the minimum version of Ruby that should be used is 2.0.0 (standard on OS X version 10.9 and up) and all gems should be installed and versions managed by Bundler. When writing a Gemfile, versions should all be specified using the specifier to ensure that gems stay on the same major and minor versions, making upgrades in minor versions purposeful. Gems should be installed in to a vendor folder in each project, which should be ignored from version control. In addition to Bundler, there are a number of Compass extensions that should be used as a standard for a variety of needs.
+p When writing CSS, use Sass with the <code>scss</code> syntax and the Compass authoring framework.
+
+p When compiling Sass and Compass, only use the Ruby gems to compile them or a tool that calls out to the Ruby gems.
+
+p In order to ensure that all environments are the same, the minimum version of Ruby that should be used is 2.0.0 (standard on OS X version 10.9 and up) and all gems should be installed and managed by Bundler.
+
+p When writing a Gemfile, versions should all be specified using the specifier to ensure that gems stay on the same major and minor versions, making upgrades in minor versions purposeful.
+
+p Gems should be installed in to a vendor folder in each project, which should be ignored from version control.
+
+p In addition to Bundler, there are a number of Compass extensions that should be used as a standard for a variety of needs.
 
 / # Set this to the root of your project when deployed:
 / http_path = "/"
@@ -25,11 +35,17 @@ p When writing CSS, use Sass with the Compass authoring framework. When compilin
 
 h3 Mixin/Extend Pattern
 
-p Mixins are best used when they don't needlessly duplicate the properties they write. We can do this using placeholder selectors and @extend. The only properties that should be directly written to the selector calling a mixin should be properties that have been directly altered due to mixin arguments. Any other properties should be extended. All arguments that have default values should have those default values controlled by globally namespaced !default variables to make overriding those defaults easy and accessible. All mixins that provide extends should also have an $extend optional argument, ideally as its last argument, also globally defaulted.
+p Mixins are best used when they don't needlessly duplicate the properties they write. We acheive this using placeholder selectors and <code>@extend</code>.
 
-p Mixins should also be divided up by purpose. While an omni mixin may be easier to write, having smaller mixins will make maintaining and using said mixins, as well as changing discrete parts of a rendered component, easier to do.
+p The only properties that should be directly written to the selector calling a mixin should be properties that have been directly altered due to mixin arguments. Any other properties should be extended.
 
-p Let's take a look at a typical message component mixin as an example of how to re-write it using our mixin/extend pattern.
+p All arguments that have default values should have those default values controlled by globally namespaced !default variables to make overriding those defaults easy and accessible.
+
+p All mixins that provide extends should also have an $extend optional argument, ideally as its last argument, also globally defaulted.
+
+p Mixins should also be divided up by purpose. While an omni mixin may be easier to write, having smaller mixins will make maintaining and using said mixins, as well as changing discrete parts of a rendered component, easier.
+
+/ p Let's take a look at a typical message component mixin as an example of how to re-write it using our mixin/extend pattern.
 
 / // Sass
 / @mixin message($color, $padding: .25em .5em, $width: 80%) {
@@ -86,7 +102,7 @@ p Let's take a look at a typical message component mixin as an example of how to
 /   color: #bf0000;
 / }
 
-p While the single mixin may allow us to easily get the output we want, it does so at the cost of duplicating properties, and thus vastly bloating, our output CSS. This can be remedied almost entirely simply by rewriting our original mixin using our new mixin/extend pattern.
+/ p While the single mixin may allow us to easily get the output we want, it does so at the cost of duplicating properties, and thus vastly bloating, our output CSS. This can be remedied almost entirely simply by rewriting our original mixin using our new mixin/extend pattern.
 
 / // Sass
 / $message-padding: .25em .5em !default;
@@ -173,7 +189,7 @@ p While the single mixin may allow us to easily get the output we want, it does 
 /   color: #bf0000;
 / }
 
-p While this approach certainly requires more work up front to build the mixins and extendables, it produces much more controlled and succinct output CSS, which is what we're aiming to write.
+/ p While this approach certainly requires more work up front to build the mixins and extendables, it produces much more controlled and succinct output CSS, which is what we're aiming to write.
 
 h3 Partial Structure
 
@@ -181,11 +197,17 @@ p Sass partials are a way for us to organize our styling knowledge into maintain
 
 p At the root of our Sass folder is our style.scss file, which holds the core of our styling, and a no-script.scss file to provide a CSS fallback if scripting isn't available. In the sass folder, create an enhancements folder, a fallbacks folder, and a partials folder for stylesheets that provide enhanced styling for powerful browsers, fallback styling for less powerful browsers, and partials for all to draw from, each respectively.
 
-p Each feature being enhanced with or fallback being provided for should be named feature.scss and be placed into their respective folder; for instance, enhancements and fallbacks for CSS Animations would have a folder structure that looked something like sass/enhancements/css-animations.scss and sass/fallbacks/css-animations.scss.
+p Each feature being enhanced or fallback being provided should be named feature.scss and be placed into their respective folder; for instance, enhancements and fallbacks for CSS Animations would have a folder structure that looked something like <code>sass/enhancements/css-animations.scss</code> and <code>sass/fallbacks/css-animations.scss</code>.
 
-p The partials directory should be divided up into 3 sub directories, global, components, and layouts. Inside of global, there should be a folder a piece for variables, functions, mixins, and extendables, with partials to match. Inside each of those folders should go partials whose content should be made available globally and aren't component specific. For instance, global color and typographic variables, background/text color contrast mixins, ligature extendables, etc…
+p The partials directory should be divided up into 3 sub directories, global, components, and layouts.
 
-p Both components and layouts should be built using a similar partial structure, henceforth known as the component partial structure. Each component should have a partial and matching folder, and inside that folder a partial a piece for variables, functions, mixins, and extendables. Each of these partials should hold styling knowledge specific to that component; for instance, variables could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in the example sass folder.
+p Inside of global, there should be a folder for variables, a folder for functions, a folder for mixins, and a folder for extendables.
+
+p Inside each of those folders should go partials whose content should be made available globally and aren't component specific. For instance, global color and typographic variables, background/text color contrast mixins, ligature extendables, etc.
+
+p Both components and layouts should be built using a similar partial structure, henceforth known as the component partial structure.
+
+p Each component should have a partial and a matching folder, and inside that folder there should be a partial for variables, a partial for functions, a partial for mixins, and a partial for extendables. Each of these partials should hold styling knowledge specific to that component; for instance, variables could have color variables specific to that component, but the color it is set to should come from the global color partial. An example of this can be seen in the example sass folder.
 
 p The Import Once extension should be utilized to prevent duplication of selectors for extendable classes. Mixins should share their naming convention with the object they are used to style.
 

@@ -11,27 +11,34 @@ p When starting projects, RWD should not be a line item, something to throw on a
 section.styleguide-module-details
   h2 Future Friendly
 
-  p The methodology of RWD is a methodology of creating sites that are Future Friendly. The core tenants of being future friendly are as follows:
+  p RWD is a methodology for creating websites that are future-friendly. The core tenants of being future-friendly are as follows:
 
   ul
-  li Acknowledge and embrace unpredictability.
-  li Think and behave in a future-friendly way.
-  li We can't be all things to all devices.
-  li Create meaningful content and services.
-  li Design services and information architecture content and mobile first
-  li Design content models to be used across presentations (website, apps, APIs, etc…)
-  li Design content models around standards to be interoperable. Focus on its long term integrity
-  li Having well-structured content is essential to art direction. Structure and store content accordingly
-  li Help others do the same.
-  li The set of suggestions from the Future Friendly manifesto that should not be followed as written are those dealing with device categorization and device detection. The sentiment is correct, enhance any given device with a user experience that is tailored to its capabilities, but that should be done using progressive enhancement and feature detection instead. Creating enhanced experiences this way, and encouraging users to take advantage of those enhanced experiences (as opposed to forcing them upon users based on their user agent string) allows for a more sustainable and future looking approach to delivering these experiences.
+    li Acknowledge and embrace unpredictability.
+    li Think and behave in a future-friendly way.
+    li We can't be all things to all devices.
+    li Create meaningful content and services.
+    li Design services and information architecture content-first and mobile-first.
+    li Design content models to be used across presentations (website, apps, APIs, etc.)
+    li Design content models around standards to be interoperable. Focus on its long term integrity.
+    li Having well-structured content is essential to art direction. Structure and store content accordingly.
+    li Help others do the same.
+    li The set of suggestions from the future-friendly manifesto that should not be followed as written are those dealing with device categorization and device detection. The sentiment is correct, enhance any given device with a user experience that is tailored to its capabilities, but that should be done using progressive enhancement and feature detection instead. Creating enhanced experiences this way, and encouraging users to take advantage of those enhanced experiences (as opposed to forcing them upon users based on their user agent string) allows for a more sustainable and future looking approach to delivering these experiences.
 
 section.styleguide-module-details
   h2 Device Detection
 
-  p Device detection is a bad and unsustainable practice. Relying upon current knowledge, device detection is a method of identifying a device based on its User Agent String. This is a poor method of identification in and of itself; it is based on current knowledge, meaning that lists need to be maintained and can only be updated after a device has been released, making said lists consistently out of date. Additionally, if used for categorizing devices, for instance into phone, tablet, and desktop devices, it requires subjective determinations that may or may not reflect the realities of the actual device and its user, and itself pushes lists out of date and can create divergent lists. Oh, and user agent strings can (and often times, especially on the mobile web, do) be faked to emulate the user agent string of another device and/or browser. It should go without saying that using user agent strings to determine and pivot on browsers and browser versions should also not be done.
+  p <strong>Device detection is a bad and unsustainable practice</strong>. Device detection is a method of identifying a device based on its User Agent String. This is a poor method of identification in and of itself; it is based on current knowledge, meaning that lists need to be maintained and can only be updated after a device has been released, making said lists consistently out of date.
+
+  p Additionally, if used for categorizing devices, for instance into phone, tablet, and desktop devices, it requires subjective determinations that may or may not reflect the realities of the actual device and its user. This categorization can also push lists out of date and create divergent lists. Oh, and user agent strings can (and often times, especially on the mobile web, do) be faked to emulate the user agent string of another device and/or browser. It should go without saying that using user agent strings to determine and pivot on browsers and browser versions should also not be done.
 
   p Device detection extends to choices made when designing sites as well, not just user agent strings. Common examples of non user agent string device detection include mimicking iOS native app visual styling and user experience patterns on the web, constraining designs to "phone", "tablet", and "desktop" sizes (or "small", "medium", and "large"), choosing media queries and breakpoints based on "common" device sizes, and making assumptions about features based on screen size (such as small screens have touch capabilities).
 
-  p The reason device and/or browser detection was used in the past, and some still believe it has a place in a modern web development workflow, is because it is often used as a means to make guesses at the features available to work with or at the stereotypical expected user behavior. Unfortunately, it is a pretty terrible tool for doing both. On the feature side, there is a widely accepted best practice of using progressive enhancement and feature detection to "ask" a browser what features are available and enhance the experience with those features. This approach means that a web page can adapt to what is actually available in a way that works across all past, present, and future devices in a way that is much more reliable and hardy than device detection. On the expected user behavior side, as Josh Clark points out:
+  p The reason device and/or browser detection was used in the past, and some still believe it has a place in a modern web development workflow, is because it is often used as a means to make guesses at the features available to work with or at the stereotypical expected user behavior. Unfortunately, it is a pretty terrible tool for doing both.
 
-  p While talking about mobile, the point is as follows: users are the same regardless of the device they choose to use. Assuming a user has a different set of wants or needs exclusively based on the fact a user agent string says they are using a tablet device will always be wrong. Bring personal experience into decision making; when browsing a website on your phone, are your wants and needs there all that different than when you do so on a desktop computer?
+  p On the feature side, there is a widely accepted best practice of using progressive enhancement and feature detection to "ask" a browser what features are available and enhance the experience with those features. This approach means that a web page can adapt to what is actually available in a way that works across all past, present, and future devices in a way that is much more reliable and hardy than device detection. On the expected user behavior side, as Josh Clark points out:
+
+  blockquote
+    p While talking about mobile, the point is as follows: users are the same regardless of the device they choose to use.
+    p Assuming a user has a different set of wants or needs exclusively based on the fact a user agent string says they are using a tablet device will always be wrong.
+    p Bring personal experience into decision making; when browsing a website on your phone, are your wants and needs there all that different than when you do so on a desktop computer?

@@ -133,7 +133,7 @@ section.styleguide-module-details
 
 section.styleguide-module-details
   h2 Reset
-  p A CSS reset is designed to reset various element styles to a baseline and reduce browser inconsistencies and allow. For Ally we will be using a modified version of a CSS reset based on the one used in <a href="http://html5boilerplate.com">HTML5 Boilerplate</a>.
+  p A CSS reset is designed to reset various element styles to a baseline and reduce browser inconsistencies and allow. We will be using a modified version of a CSS reset based on the one used in <a href="http://html5boilerplate.com">HTML5 Boilerplate</a>.
 
   h2 Understanding Specificity
   p There are many selectors to take into account when calculating specificity, but for our purposes we're going to keep things simple. If you're interested in learning more about calculating specificity for conflicting rules read up on <a href="http://www.htmldog.com/guides/cssadvanced/specificity/">Specificity by Patrick Griffiths</a> or a <a href="http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html">Star Wars spin on specificity by Andy Clarke</a>.
@@ -148,6 +148,14 @@ section.styleguide-module-details
     li Type + Type with a Class Selector #{inline_code("div p.class {color: #999}")}
     li ID Selector #{inline_code("#id {color: #ccc}")}
     li ID + Type Selector #{inline_code("#id p {color: #efefef;}")}
+
+  p It is best to keep specificity low and styles reusable. ID selectors are not recommended.
+
+  p For more information on low-specificity strategies read the following:
+
+  ul
+    li <a href="http://css-tricks.com/strategies-keeping-css-specificity-low">Strategies for Keeping Specificity Low</a> by Chris Coyier
+    li <a href="http://csswizardry.com/2014/10/the-specificity-graph/">The Specificity Graph</a> by Harry Roberts
 
 section.styleguide-module-details
   h2 Guidelines for Coding CSS
@@ -167,6 +175,7 @@ section.styleguide-module-details
   ul
     li being overly specific prevents you from being able to reuse CSS rules elsewhere
     li the more specific your selectors are, the larger and more complex your stylesheet will become
+    li avoid ID selectors
     li it's easier to be less specific from the start while adding specific rules as situations come up than it is to refactor later
 
   p Don't write something like this:
